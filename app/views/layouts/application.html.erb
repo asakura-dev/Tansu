@@ -14,6 +14,8 @@
 <% else %>
   <%= link_to 'Sign up', new_user_registration_path %>
   <%= link_to 'login', new_user_session_path %>
+  <%= link_to "login with twitter",
+  user_omniauth_authorize_path(:twitter) %>
 <% end %>
 </p>
 

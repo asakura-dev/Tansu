@@ -43,10 +43,10 @@ Rails.application.configure do
 
   # 環境変数の設定の仕方: http://qiita.com/tsumekoara/items/78824fc33d21a164d3a6
   config.action_mailer.smtp_settings = {
-    :address => ENV["smtp_address"],
-    :port => ENV["smtp_port"],
+    :address => ENV["SMTP_ADDRESS"],
+    :port => ENV["SMTP_PORT"],
     :authentication => :plain,
-    :user_name => ENV["smtp_user_name"],
-    :password => ENV["smtp_password"]
+    :user_name => ENV["SMTP_USER_NAME"],
+    :password => ENV["SMTP_PASSWORD"]
   }
 end
