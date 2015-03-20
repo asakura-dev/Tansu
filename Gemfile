@@ -42,6 +42,9 @@ gem 'bcrypt', '~> 3.1.7'
 
 ## 認証機能を提供するGem
 gem 'devise'
+### 日本語に対応させる
+gem 'devise-i18n'
+gem 'devise-i18n-views'
 
 ## ページネーション機能を提供するGem
 gem 'will_paginate'

@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -34,4 +35,18 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+
+  config.action_mailer.default_url_options = { :host =>
+    'localhost:3000' }
+  
+  config.action_mailer.delivery_method = :smtp
+
+  # 環境変数の設定の仕方: http://qiita.com/tsumekoara/items/78824fc33d21a164d3a6
+  config.action_mailer.smtp_settings = {
+    :address => ENV["smtp_address"],
+    :port => ENV["smtp_port"],
+    :authentication => :plain,
+    :user_name => ENV["smtp_user_name"],
+    :password => ENV["smtp_password"]
+  }
 end
