@@ -53,5 +53,6 @@ gem 'omniauth-twitter'
 ## ページネーション機能を提供するGem
 gem 'will_paginate'
 
-## 'modelにschemeをコメントとして埋め込む'
+## modelにschemeをコメントとして埋め込む
+## bundle exec annotate
 gem 'annotate'
