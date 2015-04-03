@@ -2,6 +2,7 @@ ja:
   activerecord:
     attributes:
       user:
+        name: "アカウントID"
         current_password: "現在のパスワード"
         email: "メールアドレス"
         password: "パスワード"
