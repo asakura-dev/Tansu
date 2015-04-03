@@ -9,3 +9,11 @@
 - Bundler
 - Ruby On Rails
 をインストール
+
+## 設定
+./config/initializers/devise.rb
+
+config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
+
+のメールアドレス部分を好みに変更(メールを送信するアドレスが良いです)
+この部分に指定されたメールアドレスが，登録メールのデフォルトの返信先になります．
