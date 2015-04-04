@@ -2,7 +2,7 @@
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
   # The secret key used by Devise. Devise uses this key to generate
-  # random tokens. Changing this key will render invalid all existing
+  # rando tokens. Changing this key will render invalid all existing
   # confirmation, reset password and unlock tokens in the database.
   # config.secret_key = 'bb886696696ccbb8d4fbe72ecb6809146ad45b7a102653d79dfa67f3e7d0bf7fa4a4ce39c05f2e3718ac9bc3932b77e5a7bcf1c9aa88d998e7d8fb7bbcf00508'
 
@@ -236,7 +236,8 @@ Devise.setup do |config|
   
   # API key
   config.omniauth :twitter, ENV["TWITTER_CONSUMER_KEY"], ENV["TWITTER_CONSUMER_SECRET"]
-
+  config.omniauth :github , ENV["GITHUB_CONSUMER_KEY"], ENV["GITHUB_CONSUMER_SECRET"],
+  :callback_url => ENV["GRUPPI_GOODS_URL"]+"/users/auth/github/callback"
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
   # change the failure app, you can configure them inside the config.warden block.

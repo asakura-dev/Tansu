@@ -14,8 +14,6 @@
           </div>
         </div>
       <% else %>
-	<%= link_to "Twitterでログイン",
-	user_omniauth_authorize_path(:twitter), class: "link l-align-right" %>
 	<%= link_to 'ログイン', new_user_session_path, class: "link l-align-right" %>
 	<%= link_to '新規登録', new_user_registration_path, class: "link l-align-right" %>
       <% end %>

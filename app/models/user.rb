@@ -31,7 +31,8 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :omniauthable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable, :confirmable
+         :recoverable, :rememberable, :trackable, :validatable, :confirmable,
+  omniauth_providers: [:twitter, :github]
 
   before_save :when_confirmed
 
@@ -45,6 +46,23 @@ class User < ActiveRecord::Base
                       password: Devise.friendly_token[0,20]
                       )
       # 外部連携ログインでは，メールでのアカウントの有効化をスキップさせる
+      user.skip_confirmation!
+      user.set_autority
+      user.save
+    end
+    user
+  end
+
+  def self.find_for_github_oauth(auth, signed_in_resource=nil)
+    user = User.where(:provider => auth.provider, :uid => auth.uid).first
+    puts auth
+    unless user
+      user = User.new(name: auth.info.nickname,
+                      provider: auth.provider,
+                      uid: auth.uid,
+                      email: User.create_unique_email,
+                      password: Devise.friendly_token[0,20]
+                      )
       user.skip_confirmation!
       user.set_autority
       user.save

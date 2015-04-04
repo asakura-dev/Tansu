@@ -49,6 +49,7 @@ gem 'devise-i18n-views'
 ## 外部連携ログインのGem
 gem 'omniauth'
 gem 'omniauth-twitter'
+gem 'omniauth-github'
 
 ## ページネーション機能を提供するGem
 gem 'will_paginate'

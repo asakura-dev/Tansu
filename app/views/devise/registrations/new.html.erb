@@ -52,7 +52,7 @@
       <div class="l-grid-8-12 l-align-center">
 	<div class="social_btns">
 	  <%= link_to "Twitterで登録", user_omniauth_authorize_path(:twitter), class: "link_btn link_btn_twitter link_btn_large" %>
-	  <%= link_to "Githubで登録", "/", class: "link l-align-right" %>
+	  <%= link_to "Githubで登録", user_omniauth_authorize_path(:github), class: "link_btn link_btn_github link_btn_large" %>
 	</div>
       </div>
     </div>
