@@ -1,0 +1,43 @@
+$primary: #33cccc;
+$primary-dark: #339999;
+$primary-light: #ace9ea;
+$warning: #ed5a5a;
+$warning-dark: #ea4848;
+.intro_top{
+  border-bottom: 2px solid $primary;
+  padding:10px 0;
+  h1{
+    font-size:35px;
+    line-height:50px;
+    text-align:center;
+    margin:50px 0 10px 0;
+    color:$primary-dark;
+  }
+  p{
+    font-size:18px;
+    line-height:25px;
+    text-align:center;
+    color:$primary-dark;
+  }
+}
+.intro_box{
+  img{
+    text-align: center;
+    width: 398px;
+    margin: 10px 45px;
+    border: 1px solid $primary;
+  }
+  h2{
+    font-size:30px;
+    line-height:40px;
+    text-align:center;
+    color:$primary-dark;
+  }
+  p{
+    font-size:18px;
+    line-height:25px;
+    text-align:center;
+    color:$primary-dark;
+  }
+
+}
