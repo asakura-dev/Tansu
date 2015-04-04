@@ -1,0 +1,16 @@
+<div class="l-header">
+  <div class="global-nav">
+    <div class="l-constrained">
+      <%= link_to 'Gruppi Goods', root_path, class: "logo link l-align-left"%>
+      <% if user_signed_in? %>
+	<%= link_to 'ログアウト', destroy_user_session_path, class: "link l-align-right", method: :delete %>
+	<%= link_to 'ユーザ情報を編集', edit_user_registration_path, class: "link l-align-right" %>
+      <% else %>
+	<%= link_to "Twitterでログイン",
+	user_omniauth_authorize_path(:twitter), class: "link l-align-right" %>
+	<%= link_to 'ログイン', new_user_session_path, class: "link l-align-right" %>
+	<%= link_to '新規登録', new_user_registration_path, class: "link l-align-right" %>
+      <% end %>
+    </div>
+  </div>
+</div>

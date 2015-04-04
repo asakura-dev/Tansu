@@ -56,3 +56,6 @@ gem 'will_paginate'
 ## modelにschemeをコメントとして埋め込む
 ## bundle exec annotate
 gem 'annotate'
+
+## PCとモバイルでビューを切り替える
+gem 'jpmobile', '4.1.0'

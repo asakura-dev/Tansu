@@ -57,6 +57,7 @@ GEM
     jbuilder (2.2.12)
       activesupport (>= 3.0.0, < 5)
       multi_json (~> 1.2)
+    jpmobile (4.1.0)
     jquery-rails (3.1.2)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
@@ -143,6 +144,7 @@ DEPENDENCIES
   devise-i18n
   devise-i18n-views
   jbuilder (~> 2.0)
+  jpmobile (= 4.1.0)
   jquery-rails
   omniauth
   omniauth-twitter

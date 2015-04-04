@@ -1,0 +1,72 @@
+body{
+}
+/* Base */
+*{
+    margin: 0;
+    padding: 0;
+    color: #555;
+}
+
+html,body{
+height: 100%;
+background: #ffffff;
+font-family: 'Hiragino Kaku Gothic ProN', 'ヒラギノ角ゴ ProN W3',
+ Meiryo, メイリオ, sans-serif;
+ font-size:16px;
+}
+p {
+    word-break:break-all;
+}
+input,
+button,
+textarea {
+    font-size:15px;
+    font-family: 'Hiragino Kaku Gothic ProN', 'ヒラギノ角ゴ ProN W3',
+ Meiryo, メイリオ, sans-serif;
+    box-sizing: border-box;
+}
+
+.pull-right{
+    float:right;
+    box-sizing: border-box;
+}
+.pull-left{
+    float:left;
+    box-sizing: border-box;
+}
+.clearfix:after {
+                content: "";
+                clear: both;
+                display: block;
+}
+
+a, a:visited, a:hover {
+    /* color: #428bca; */
+}
+
+/* page-heading moduels */
+h1{
+    font-size: 25px;
+    color: #555;
+    margin: 20px 0 15px 0;
+    line-height: 25px;
+}
+h2{
+    font-size: 20px;
+    color: #555;
+    margin: 15px 0 10px 0;
+    line-height: 20px;
+}
+h3{
+  font-size:18px;
+  color:#555;
+  margin:10px 0 5px 0;
+  line-height:18px;
+}
+dt {
+    font-weight:bold;
+    margin-bottom:5px;
+}
+dd{
+    margin-bottom:3px;
+}
