@@ -1,3 +1,4 @@
+# -*- coding: undecided -*-
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -75,4 +76,18 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  config.action_mailer.default_url_options = { :host =>
+    'localhost:3000' }
+  
+  config.action_mailer.delivery_method = :smtp
+
+  # 環境変数の設定の仕方: http://qiita.com/tsumekoara/items/78824fc33d21a164d3a6
+  config.action_mailer.smtp_settings = {
+    :address => ENV["SMTP_ADDRESS"],
+    :port => ENV["SMTP_PORT"],
+    :authentication => :plain,
+    :user_name => ENV["SMTP_USER_NAME"],
+    :password => ENV["SMTP_PASSWORD"]
+  }
 end
