@@ -1,7 +1,6 @@
 $primary: #33cccc;
 $primary-dark: #339999;
-$primary-light: #ace9ea;
-$warning: #ed5a5a;
+$primary-light: #ace9ea;$warning: #ed5a5a;
 $warning-dark: #ea4848;
 
 .global-nav{
@@ -351,7 +350,7 @@ $warning-dark: #ea4848;
   margin:10px 0 0 0;
   .side_divider_right{
     border-right:1px solid $primary-dark;
-
+    height:250px;
   }
 }
 
@@ -583,19 +582,6 @@ $warning-dark: #ea4848;
     width:100%;
   }
   .textarea{
-    width:100%;
-    height:100px;
-  }
-}
-.form{
-  padding:10px;
-  &>div{
-      margin:20px 0;
-  }
-  input{
-    width:100%;
-  }
-  textarea{
     width:100%;
     height:100px;
   }

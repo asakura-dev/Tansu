@@ -18,28 +18,17 @@
 
     <%# メインコンテンツ %>
     <div class="l-main clearfix">
-    <%= yield %>
-      <p class="navbar-text pull-right">
-	<% if user_signed_in? %>
-	  Logged in as <br>
-	  <strong><%= current_user.email %></strong><br>
-	  <strong><%= current_user.name %></strong>
-	  <%= link_to 'Edit profile', edit_user_registration_path %>
-	  <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
-	<% else %>
-	  <%= link_to 'Sign up', new_user_registration_path %>
-	  <%= link_to 'login', new_user_session_path %>
-	  <%= link_to "login with twitter",
-	  user_omniauth_authorize_path(:twitter) %>
-	<% end %>
-      </p>
-
       <% if notice %>
-	<p class="alert alert-notice"><%= notice %></p>
+	<div class="l-constrained">
+	  <p class="alert alert-notice"><%= notice %></p>
+	</div>
       <% end %>
       <% if alert %>
-	<p class="alert alert-error"><%= alert%></p>
+	<div class="l-constrained">
+	  <p class="alert alert-error"><%= alert%></p>
+	</div>
       <% end %>
+    <%= yield %>
     </div>
     <%# フッター %>
     <%= render 'layouts/pc/footer' %>

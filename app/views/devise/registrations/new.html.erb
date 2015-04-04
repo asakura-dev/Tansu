@@ -1,21 +1,62 @@
-<h2><%= t('.sign_up', :default => "Sign up") %></h2>
+<div class="l-constrained">
+  <h1 class="border_heading"><%= t('.sign_up', :default => "Sign up") %></h1>
+  <div class="l-grid-row signin_wrapper clearfix">
+    <div class="l-grid-1-2 l-align-left side_divider_right">
+      <div class="l-grid-row l-align-center">
+	<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class => "form"}) do |f| %>
+	  <%= devise_error_messages! %>
+	
+	  <div class="l-grid-row clearfix">
+	    <div class="l-grid-4-12 l-align-left">
+	      <%= f.label :name %>
+	    </div>
+	    <div class="l-grid-8-12 l-align-left">
+	      <%= f.text_field :name %>
+	    </div>
+	  </div>
+	  <div class="l-grid-row clearfix">
+	    <div class="l-grid-4-12 l-align-left">
+	      <%= f.label :email %>
+	    </div>
+	    <div class="l-grid-8-12 l-align-left">
+	      <%= f.email_field :email %>
+	    </div>
+	  </div>
+	  <div class="l-grid-row clearfix">
+	    <div class="l-grid-4-12 l-align-left">
+	      <%= f.label :password %>
+	    </div>
+	    <div class="l-grid-8-12 l-align-left">
+	      <%= f.password_field :password %>
+	    </div>
+	  </div>
+	  <div class="l-grid-row clearfix">
+	    <div class="l-grid-4-12 l-align-left">
+	      <%= f.label :password_confirmation %>
+	    </div>
+	    <div class="l-grid-8-12 l-align-left">
+	      <%= f.password_field :password_confirmation %>
+	    </div>
+	  </div>
+	  <div class="l-grid-row clearfix">
+	    <div class="l-grid-4-12 l-align-right">
+	    <%= f.submit t('.sign_up', :default => "Sign up"), class: "button button-success" %>
+	    </div>
+	  </div>
+	<% end %>
+	<br>
+	<%= render "devise/shared/links" %>
+      </div>
+    </div>
+    <div class="l-grid-1-2 l-align-left">
+      <div class="l-grid-8-12 l-align-center">
+	<div class="social_btns">
+	  <%= link_to "Twitterで登録", user_omniauth_authorize_path(:twitter), class: "link_btn link_btn_twitter link_btn_large" %>
+	  <%= link_to "Githubで登録", "/", class: "link l-align-right" %>
+	</div>
+      </div>
+    </div>
+  </div>
+</div>
 
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
 
-  <div><%= f.label :name %><br />
-  <%= f.text_field :name %></div>
-
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email %></div>
-
-  <div><%= f.label :password %><br />
-  <%= f.password_field :password %></div>
-
-  <div><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></div>
-
-  <div><%= f.submit t('.sign_up', :default => "Sign up") %></div>
-<% end %>
-
-<%= render "devise/shared/links" %>
