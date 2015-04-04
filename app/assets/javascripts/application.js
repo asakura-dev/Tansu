@@ -12,4 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require_tree .
+//= require knockout
+
+// root_vmにknockout.jsのView Modelを追加していく
+// 一番最後に読み込まれるko_bind.jsで追加されたView ModelをViewに紐つける
+var root_vm = {};

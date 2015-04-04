@@ -3,7 +3,12 @@
 <head>
   <title>GruppiGoods</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
+
   <%= javascript_include_tag :application %>
+  <%= javascript_include_tag :dropdown %>
+  <%= yield :javascript %>
+  <%= javascript_include_tag :ko_bind %>
+
   <%= csrf_meta_tags %>
 </head>
 <body>

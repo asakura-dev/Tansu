@@ -3,8 +3,16 @@
     <div class="l-constrained">
       <%= link_to 'Gruppi Goods', root_path, class: "logo link l-align-left"%>
       <% if user_signed_in? %>
-	<%= link_to 'ログアウト', destroy_user_session_path, class: "link l-align-right", method: :delete %>
-	<%= link_to 'ユーザ情報を編集', edit_user_registration_path, class: "link l-align-right" %>
+	<div class="dropdown-user pull-right" data-bind="with: dropdown">
+          <img src="http://pbs.twimg.com/profile_images/541976875929571328/vnbAiTRn_400x400.png" data-bind="click: toggle">
+          <div class="dropdown-panel" data-bind="visible: actived">
+            <ul>
+              <li><a href="#">プロフィール</a></li>
+              <li><%= link_to 'アカウント設定', edit_user_registration_path %></li>
+              <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
+            </ul>
+          </div>
+        </div>
       <% else %>
 	<%= link_to "Twitterでログイン",
 	user_omniauth_authorize_path(:twitter), class: "link l-align-right" %>
