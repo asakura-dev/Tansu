@@ -24,4 +24,5 @@ class Users::RegistrationsController < Devise::RegistrationsController
       u.permit(:name, :email, :password, :password_confirmation, :current_password)
     end
   end
+  
 end

@@ -7,7 +7,15 @@ Rails.application.routes.draw do
     :passwords => "users/passwords",
     :omniauth_callbacks => "users/omniauth_callbacks"
   }
-  resources :users, :only => [:show]
+
+  namespace :admin do
+    # Directs /admin/products/* to Admin::ProductsController
+    # (app/controllers/admin/products_controller.rb)
+    namespace :member do
+      resource :authority, :only => [:show, :update]
+      resource :request, :only => [:show, :update]
+    end
+  end
   
   
   

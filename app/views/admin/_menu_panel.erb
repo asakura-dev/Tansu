@@ -1,0 +1,25 @@
+<div class="admin_panel">
+  <ul>
+    <li class="heading">
+      <a href="/">管理</a>
+    </li>
+    <li>
+      <a href="/">一覧</a>
+    </li>
+    <li>
+      <a href="/">備品追加</a>
+    </li>
+    <li>
+      <%= link_to "ユーザの追加と承認", admin_member_request_path %>
+    </li>
+    <li>
+      <%= link_to "権限の管理", admin_member_authority_path %>
+    </li>
+    <li>
+      <form class="input_box clearfix">
+	<input type="text" class="l-align-left">
+	<button class="l-align-right">検索</button>
+      </form>
+    </li>
+  </ul>
+</div>
