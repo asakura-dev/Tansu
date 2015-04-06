@@ -237,7 +237,7 @@ Devise.setup do |config|
   # API key
   config.omniauth :twitter, ENV["TWITTER_CONSUMER_KEY"], ENV["TWITTER_CONSUMER_SECRET"]
   config.omniauth :github , ENV["GITHUB_CONSUMER_KEY"], ENV["GITHUB_CONSUMER_SECRET"],
-  :callback_url => ENV["GRUPPI_GOODS_URL"]+"/users/auth/github/callback"
+  :callback_url => ENV["GRUPPI_GOODS_URL"] + "/users/auth/github/callback"
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
   # change the failure app, you can configure them inside the config.warden block.

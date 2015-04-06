@@ -11,6 +11,7 @@
     <%= image_tag "permission-desc.png" %>
     <h3>権限の変更</h3>
     <div class="block_content l-grid-row">
+      
     </div>
   </div>
 </div>

@@ -1,7 +1,95 @@
+<%= content_for :javascript do %>
+  <%= javascript_include_tag :member_request %>
+<% end %>
 <div class="l-constrained clearfix">
   <h1>管理画面</h1>
   <%= render "admin/side" %>
   <div class="l-grid-9-12 l-align-left">
     <h2>ユーザーの追加と承認</h2>
+    <h3>参加を申請しているユーザ</h3>
+    
+    <div class="raw_requests"style="display:none">
+      <!-- 
+	      一度，参加申請をしているリストのDOMを生成し，
+	      jQueryでroot_vm.member_request.requestsに追加，
+	      リストのDOMを削除．
+	      -->
+      <% @requesting_users.each do |user| %>
+	<span class="raw_request">
+	  <span class="id"><%= user.id %></span>
+	  <span class="name"><%= user.name %></span>
+	</span>
+      <% end %>
+    </div>
+    <div class="raw_rejected_requests"style="display:none">
+      <!-- 
+	      一度，参加申請をしているリストのDOMを生成し，
+	      jQueryでroot_vm.member_request.requestsに追加，
+	      リストのDOMを削除．
+	      -->
+      <% @rejected_users.each do |user| %>
+	<span class="raw_rejected_request">
+	  <span class="id"><%= user.id %></span>
+	  <span class="name"><%= user.name %></span>
+	</span>
+      <% end %>
+    </div>
+    <script>
+     $(".raw_request").each(function(){
+	 root_vm["member_request"].pushRequest(
+	     "requests",
+	     $(this).children(".id").text(),
+	     $(this).children(".name").text()
+	 );
+     });
+     $(".raw_requests").remove();
+     
+     $(".raw_rejected_request").each(function(){
+	 root_vm["member_request"].pushRequest(
+	     "rejected_requests",
+	     $(this).children(".id").text(),
+	     $(this).children(".name").text()
+	 );
+     });
+     $(".raw_rejected_requests").remove();
+    </script>
+    <p data-bind="if: member_request.requests().length == 0">参加を申請しているユーザーがいません</p>
+    <div data-bind="foreach: {data: member_request.requests, beforeRemove: member_request.hideRequest}">
+      <div class="user_box block_content clearfix">
+	<div class="l-grid-1-12 l-align-left">
+	  <img class="large" src="https://pbs.twimg.com/profile_images/541976875929571328/vnbAiTRn_400x400.png">
+	</div>
+	<div class="l-grid-7-12 l-align-left">
+	  <p>
+	    <span data-bind="text: name"></span><br>
+	  </p>
+	</div>
+	<div class="l-grid-4-12 l-align-left">
+	  <form>
+	    <button class="button button-warning offset" data-bind="click: reject">拒否</button>
+	    <button class="button button-success offset" data-bind="click: approve">承認</button>
+	  </form>
+	</div>
+      </div>
+    </div>
+    <h3>拒否済みユーザ</h3>
+    <p data-bind="if: member_request.rejected_requests().length == 0">拒否済みのユーザはいません．</p>
+    <div data-bind="foreach:{data: member_request.rejected_requests, afterAdd: member_request.showRequest, beforeRemove: member_request.hideRequest}" style="opacity: 0.5">
+      <div class="user_box block_content clearfix">
+	<div class="l-grid-1-12 l-align-left">
+	  <img class="large" src="https://pbs.twimg.com/profile_images/541976875929571328/vnbAiTRn_400x400.png">
+	</div>
+	<div class="l-grid-7-12 l-align-left">
+	  <p>
+	    <span data-bind="text: name"></span><br>
+	  </p>
+	</div>
+	<div class="l-grid-4-12 l-align-left">
+	  <form>
+	    <button class="button button-success offset" data-bind="click: approve">承認</button>
+	  </form>
+	</div>
+      </div>
+    </div>
   </div>
 </div>

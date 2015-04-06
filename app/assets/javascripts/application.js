@@ -20,5 +20,7 @@ var root_vm = {};
 
 // .alert-noticeクラスのアラートメッセージは時間経過で消す
 $(function(){
-    $(".alert-notice").delay(3000).fadeOut(500);
+    $(".alert-notice").hide().slideDown().delay(2000).slideUp(function() {
+	$(elem).remove();
+    });
 });
