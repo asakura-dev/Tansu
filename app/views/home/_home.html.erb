@@ -1,0 +1,4 @@
+<h1>ホーム</h1>
+<% if current_user.authority == "owner" || current_user.authority == "manager" %>
+  <%= render "home/side"%>
+<% end %>

@@ -36,7 +36,7 @@
     </div>
     <script>
      $(".raw_request").each(function(){
-	 root_vm["member_request"].pushRequest(
+	 root_vm["member_request_vm"].pushRequest(
 	     "requests",
 	     $(this).children(".id").text(),
 	     $(this).children(".name").text()
@@ -45,7 +45,7 @@
      $(".raw_requests").remove();
      
      $(".raw_rejected_request").each(function(){
-	 root_vm["member_request"].pushRequest(
+	 root_vm["member_request_vm"].pushRequest(
 	     "rejected_requests",
 	     $(this).children(".id").text(),
 	     $(this).children(".name").text()
@@ -53,8 +53,8 @@
      });
      $(".raw_rejected_requests").remove();
     </script>
-    <p data-bind="if: member_request.requests().length == 0">参加を申請しているユーザーがいません</p>
-    <div data-bind="foreach: {data: member_request.requests, beforeRemove: member_request.hideRequest}">
+    <p data-bind="if: member_request_vm.requests().length == 0">参加を申請しているユーザーがいません</p>
+    <div data-bind="foreach: {data: member_request_vm.requests, beforeRemove: member_request_vm.hideRequest}">
       <div class="user_box block_content clearfix">
 	<div class="l-grid-1-12 l-align-left">
 	  <img class="large" src="https://pbs.twimg.com/profile_images/541976875929571328/vnbAiTRn_400x400.png">
@@ -73,8 +73,8 @@
       </div>
     </div>
     <h3>拒否済みユーザ</h3>
-    <p data-bind="if: member_request.rejected_requests().length == 0">拒否済みのユーザはいません．</p>
-    <div data-bind="foreach:{data: member_request.rejected_requests, afterAdd: member_request.showRequest, beforeRemove: member_request.hideRequest}" style="opacity: 0.5">
+    <p data-bind="if: member_request_vm.rejected_requests().length == 0">拒否済みのユーザはいません．</p>
+    <div data-bind="foreach:{data: member_request_vm.rejected_requests, afterAdd: member_request_vm.showRequest, beforeRemove: member_request_vm.hideRequest}" style="opacity: 0.5">
       <div class="user_box block_content clearfix">
 	<div class="l-grid-1-12 l-align-left">
 	  <img class="large" src="https://pbs.twimg.com/profile_images/541976875929571328/vnbAiTRn_400x400.png">

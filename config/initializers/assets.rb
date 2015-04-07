@@ -9,3 +9,4 @@ Rails.application.config.assets.version = '1.0'
 Rails.application.config.assets.precompile += %w( dropdown.js )
 Rails.application.config.assets.precompile += %w( ko_bind.js )
 Rails.application.config.assets.precompile += %w( member_request.js )
+Rails.application.config.assets.precompile += %w( member_authority.js )

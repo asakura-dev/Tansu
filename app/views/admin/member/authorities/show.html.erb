@@ -1,3 +1,6 @@
+<%= content_for :javascript do %>
+  <%= javascript_include_tag :member_authority %>
+<% end %>
 <div class="l-constrained clearfix">
   <h1>管理画面</h1>
   <%= render "admin/side" %>
@@ -10,7 +13,77 @@
     </p>
     <%= image_tag "permission-desc.png" %>
     <h3>権限の変更</h3>
+    <div class="raw_members">
+      <% @members.each do |member|  %>
+	<div class="raw_member">
+	  <span class="id"><%= member.id %></span>
+	  <span class="name"><%= member.name %></span>
+	  <span class="authority"><%= member.authority %></span>
+	</div>
+      <% end %>
+    </div>
+    <script>
+     $(".raw_member").each(function(){
+	 if($(this).children(".authority").text() != "owner"){
+	     root_vm["members_vm"].pushMember(
+		 $(this).children(".id").text(),
+		 $(this).children(".name").text(),
+		 $(this).children(".authority").text()
+	     );
+	 }
+     });
+     $(".raw_members").remove();
+    </script>
     <div class="block_content l-grid-row">
+      <div class="user_box clearfix">
+	  <div class="l-grid-1-12 l-align-left">
+	    <img src="https://pbs.twimg.com/profile_images/541976875929571328/vnbAiTRn_400x400.png">
+	  </div>
+	  <div class="l-grid-8-12 l-align-left">
+	    <p>
+	      <span><%= current_user.name %></span>
+	    </p>
+	  </div>
+	  <div class="l-grid-3-12 l-align-left">
+	    <!-- options:セレクタが選べるオプションのオブジェクトの配列
+		 optionsText:実際に選択肢として表示される文字列
+		 optionsValue:選択された選択肢の内部的な値
+		 value: 現在選択されている値(双方向にデータバインディングされる)
+	    -->
+	    
+	    <select class="offset" disabled>
+	      <option>オーナー</option>
+	    </select>
+
+	  </div>
+      </div>
+      <div data-bind="foreach: {data: members_vm.members}">
+	<div class="user_box clearfix">
+	  <div class="l-grid-1-12 l-align-left">
+	    <img src="https://pbs.twimg.com/profile_images/541976875929571328/vnbAiTRn_400x400.png">
+	  </div>
+	  <div class="l-grid-8-12 l-align-left">
+	    <p>
+	      <span data-bind="text: name"></span>
+	    </p>
+	  </div>
+	  <div class="l-grid-3-12 l-align-left">
+	    <!-- options:セレクタが選べるオプションのオブジェクトの配列
+		 optionsText:実際に選択肢として表示される文字列
+		 optionsValue:選択された選択肢の内部的な値
+		 value: 現在選択されている値(双方向にデータバインディングされる)
+	    -->
+	    
+	    <select class="offset" data-bind="options: authorities,
+					      optionsText:'name',
+					      optionsValue: 'value',
+					      value: selectedValue
+					      ">
+	    </select>
+
+	  </div>
+	</div>
+      </div>
     </div>
   </div>
 </div>

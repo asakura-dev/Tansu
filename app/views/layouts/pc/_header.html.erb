@@ -1,5 +1,6 @@
 <div class="l-header">
   <div class="global-nav">
+    
     <div class="l-constrained">
       <%= link_to 'BKS', root_path, class: "logo link l-align-left"%>
       <% if user_signed_in? %>
@@ -16,6 +17,22 @@
       <% else %>
 	<%= link_to 'ログイン', new_user_session_path, class: "link l-align-right" %>
 	<%= link_to '新規登録', new_user_registration_path, class: "link l-align-right" %>
+      <% end %>
+    </div>
+    <div class="alert-wrapper">
+      <% if notice %>
+	<div class="l-constrained">
+	  <div class="l-grid-8-12 l-align-center">
+	    <p class="alert alert-notice"><%= notice %></p>
+	  </div>
+	</div>
+      <% end %>
+      <% if alert %>
+	<div class="l-constrained">
+	  <div class="l-grid-8-12 l-align-center">
+	    <p class="alert alert-error"><%= alert%></p>
+	  </div>
+	</div>
       <% end %>
     </div>
   </div>

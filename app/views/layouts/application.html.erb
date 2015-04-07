@@ -18,16 +18,6 @@
 
     <%# メインコンテンツ %>
     <div class="l-main clearfix">
-      <% if notice %>
-	<div class="l-constrained">
-	  <p class="alert alert-notice"><%= notice %></p>
-	</div>
-      <% end %>
-      <% if alert %>
-	<div class="l-constrained">
-	  <p class="alert alert-error"><%= alert%></p>
-	</div>
-      <% end %>
     <%= yield %>
     </div>
     <%# フッター %>
