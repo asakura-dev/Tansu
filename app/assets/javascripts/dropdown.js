@@ -5,6 +5,11 @@
 	self.toggle = function(){
 	    self.actived(!self.actived());
 	};
+	$(document).on("click",function(){
+	    if(self.actived() == true){
+		self.actived(false);
+	    }
+	});
     }
     root_vm["dropdown"] = new DropDownViewModel();
 })();

@@ -14,6 +14,18 @@
 //= require jquery_ujs
 //= require knockout
 
+// Knockout.jsの拡張
+ko.bindingHandlers.stopBubble = {
+  init: function(element) {
+    ko.utils.registerEventHandler(element, "click", function(event) {
+         event.cancelBubble = true;
+         if (event.stopPropagation) {
+            event.stopPropagation(); 
+         }
+    });
+  }
+};
+
 // root_vmにknockout.jsのView Modelを追加していく
 // 一番最後に読み込まれるko_bind.jsで追加されたView ModelをViewに紐つける
 var root_vm = {};

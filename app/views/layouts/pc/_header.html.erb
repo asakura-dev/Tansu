@@ -5,7 +5,7 @@
       <%= link_to 'BKS', root_path, class: "logo link l-align-left"%>
       <% if user_signed_in? %>
 	<div class="dropdown-user pull-right" data-bind="with: dropdown">
-          <img src="http://pbs.twimg.com/profile_images/541976875929571328/vnbAiTRn_400x400.png" data-bind="click: toggle">
+          <img src="http://pbs.twimg.com/profile_images/541976875929571328/vnbAiTRn_400x400.png" data-bind="click: toggle, clickBubble: false">
           <div class="dropdown-panel" data-bind="visible: actived">
             <ul>
               <li><a href="#">プロフィール</a></li>
