@@ -1,4 +1,4 @@
-# Gruppi-Goods 
+# Tansu
 備品管理サービス
 
 ## インストール
@@ -42,8 +42,8 @@ config.omniauth :twitter, ENV["TWITTER_CONSUMER_KEY"], ENV["TWITTER_CONSUMER_SEC
 ```ruby
 #./config/initializers/devise.rb 230行目あたり  
 config.omniauth :github , ENV["GITHUB_CONSUMER_KEY"], ENV["GITHUB_CONSUMER_SECRET"],
-  :callback_url => ENV["GRUPPI_GOODS_URL"]+"/users/auth/github/callback"
+  :callback_url => ENV["TANSU_URL"]+"/users/auth/github/callback"
 ```
 [Authorized applications](https://github.com/settings/applications)より，アプリを作成し，各キーを取得して設定してください．  
 アプリ作成の際のCallback URLは "http://あなたのホスト名/auth/github/callback"にしてください．  
-GRUPPI_GOODS_URLには，"http://あなたのホスト名"を設定してください．
+TANSU_URLには，"http://あなたのホスト名"を設定してください．
