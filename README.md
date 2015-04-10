@@ -48,4 +48,4 @@ config.omniauth :github , ENV["GITHUB_CONSUMER_KEY"], ENV["GITHUB_CONSUMER_SECRE
 ```
 [Authorized applications](https://github.com/settings/applications)より，アプリを作成し，各キーを取得して設定してください．  
 アプリ作成の際のCallback URLは "http://あなたのホスト名/auth/github/callback"にしてください．  
-TANSU_URLには，"http://あなたのホスト名"を設定してください．
+"http://tansu.dev:3000/auth/github/callback"を"http://あなたのホスト名/auth/github/callback"に書き換えてください．
