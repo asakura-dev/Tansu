@@ -1,11 +1,16 @@
 (function(){
     function MembersViewModel(){
 	var self = this;
-	function Member(id,name,authority){
+	function Member(id,name,authority,image){
 	    var member = this;
 	    this.id = id;
 	    this.name = name;
 	    this.authority = authority;
+	    if(image == "user_icon.png"){
+		this.image = "/assets/user_icon.png";
+	    }else{
+		this.image = image;
+	    }
 	    this.authorities = [
 		{name: "オーナー", value: "owner"},
 		{name: "マネージャー", value: "manager"},
@@ -53,8 +58,8 @@
 		}
 	    });
 	};
-	self.pushMember = function(id,name,authority){
-	    self.members.push(new Member(id,name,authority));
+	self.pushMember = function(id,name,authority,image){
+	    self.members.push(new Member(id,name,authority,image));
 	};
 	
 	self.members = ko.observableArray();

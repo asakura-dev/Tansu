@@ -2,9 +2,14 @@
     function MemberRequestViewModel(){
 	var self = this;
 	//参加承認リクエストオブジェクトのコンストラクタ関数
-	function MemberRequest(id,name){
+	function MemberRequest(id,name,image){
 	    this.id = id;
 	    this.name = name;
+	    if(image == "user_icon.png"){
+		this.image = "/assets/user_icon.png";
+	    }else{
+		this.image = image;
+	    }
 	}
 	//参加承認リクエストをupdateする
 	MemberRequest.prototype.update = function(authority){
@@ -42,8 +47,8 @@
 	MemberRequest.prototype.reject = function(){
 	    this.update("reject");
 	};
-	self.pushRequest = function(target,id,name){
-	    self[target].push(new MemberRequest(id, name));
+	self.pushRequest = function(target,id,name,image){
+	    self[target].push(new MemberRequest(id, name,image));
 	};
 	self.hideRequest = function(elem){ 
 	    if (elem.nodeType === 1) {
