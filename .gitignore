@@ -32,3 +32,6 @@ doc/
 \#*#
 *#
 .#*
+
+# user upload file
+/public/uploads

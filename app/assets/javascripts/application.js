@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require image-cropper
 //= require knockout
 
 // Knockout.jsの拡張

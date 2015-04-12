@@ -1,33 +1,112 @@
+<%= content_for :javascript do %>
+  <%= javascript_include_tag :user_form %>
+<% end %>
 <div class="l-constrained">
-  <h2><%= t('.title', :resource => resource_class.model_name.human , :default => "Edit #{resource_name.to_s.humanize}") %></h2>
-
-  <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+  <h1 class="border_heading">
+    <%= t('.title', :resource => resource_class.model_name.human , :default => "Edit #{resource_name.to_s.humanize}") %>
+  </h1>
+  <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put ,:class => "form"}) do |f| %>
     <%= devise_error_messages! %>
-
-    <div>
-      <%= f.label :name %><br />
-      <%= f.text_field :name %>
+    <div class="l-grid-row clearfix">
+      <div class="l-grid-6-12 l-align-left">
+	<%= f.label :name %>
+      </div>
+      <div class="l-grid-6-12 l-align-left">
+	<%= f.text_field :name %>
+      </div>
     </div>
     <% if resource.provider.empty?  %>
-      <div><%= f.label :email %><br />
-	<%= f.email_field :email %></div>
+      <div class="l-grid-row clearfix">
+	<div class="l-grid-6-12 l-align-left">
+	  <%= f.label :email %>
+	</div>
+	<div class="l-grid-6-12 l-align-left">
+	  <%= f.email_field :email %>
+	</div>
+      </div>
 
       <%- if devise_mapping.confirmable? && resource.pending_reconfirmation? -%>
 	<p>
 	  <%= t('.currently_waiting_confirmation_for_email', :email => resource.unconfirmed_email, :default => "Currently waiting confirmation for: %{email}") %>
 	</p>
       <%- end -%>
+      <div class="l-grid-row clearfix">
+	<div class="l-grid-6-12 l-align-left">
+	  <%= f.label :password %> 
+	  <i>(<%= t('.leave_blank_if_you_don_t_want_to_change_it', :default => "leave blank if you don't want to change it") %>)</i>
+	</div>
+	<div class="l-grid-6-12 l-align-left">
+	  <%= f.password_field :password, :autocomplete => "off" %>
+	</div>
+      </div>
+      <div class="l-grid-row clearfix">
+	<div class="l-grid-6-12 l-align-left">
+	  <%= f.label :password_confirmation %>
+	</div>
+	<div class="l-grid-6-12 l-align-left">
+	  <%= f.password_field :password_confirmation %>
+	</div>
+      </div>
 
-      <div><%= f.label :password %> <i>(<%= t('.leave_blank_if_you_don_t_want_to_change_it', :default => "leave blank if you don't want to change it") %>)</i><br />
-	<%= f.password_field :password, :autocomplete => "off" %></div>
-
-      <div><%= f.label :password_confirmation %><br />
-	<%= f.password_field :password_confirmation %></div>
-
-      <div><%= f.label :current_password %> <i>(<%= t('.we_need_your_current_password_to_confirm_your_changes', :default => 'we need your current password to confirm your changes') %>)</i><br />
-	<%= f.password_field :current_password %></div>
+      
     <% end %>
-    <div><%= f.submit t('.update', :default => "Update") %></div>
+
+    <% if @current_user.image? %>
+      <div class="l-grid-row clearfix" data-bind="if: user_form_vm.icon_exist">
+	<div class="thumbnail">
+	  <%= image_tag @current_user.image.url %><br>
+	  <button id="delete_image", type="button" data-bind="click: user_form_vm.deleteIcon " class="button button-warning">画像を削除</button>
+	</div>
+      </div>
+      <script>
+       //もし画像が存在すれば，画像を表示させる
+       root_vm["user_form_vm"].icon_exist(true);
+      </script>
+    <% end %>
+    <!-- アイコンが存在しない時，base64形式で新しい画像を送信する -->
+    <%= f.hidden_field :base64_image, :data => {:bind => "ifnot : user_form_vm.icon_exist"} %>
+    <div data-bind="visible : !user_form_vm.icon_exist()">
+      <div class="crop-container"><!-- - ここに編集画面が追加されます -->
+      </div>
+      <div class="l-grid-1-2 clearfix">
+	<div class="l-grid-3-8 l-align-left">
+	  <button id="rotateLeft" type="button">左回転</button>
+	  <button id="rotateRight" type="button">右回転</button>
+	</div>
+	<div class="l-grid-5-8 l-align-left">
+	  <!-- ・ファイルの選択 -->
+	  <input type="file" id="loadFile">
+	</div>
+      </div>
+      <div class="l-grid-1-2 clearfix loadFileWapper">
+	<!-- ・拡大縮小 -->
+	<div class="l-grid-1-12 l-align-left">
+	縮小
+	</div>
+	<div class="l-grid-10-12 l-align-left">
+	  <input type="range" max="100" min="0" id="zoom">
+	</div>
+	<div class="l-grid-1-12 l-align-left">
+	  拡大
+	</div>
+      </div>
+    </div>
+    <% if resource.provider.empty?  %>
+      <div class="l-grid-row clearfix">
+	<div class="l-grid-6-12 l-align-left">
+	  <%= f.label :current_password %>
+	  <p class="anotation">(<%= t('.we_need_your_current_password_to_confirm_your_changes', :default => 'we need your current password to confirm your changes') %>)</p>
+	</div>
+	<div class="l-grid-6-12 l-align-left">
+	  <%= f.password_field :current_password %>
+	</div>
+      </div>
+    <% end %>
+    <div class="l-grid-row clearfix">
+      <div class="l-grid-1-4 l-align-left">
+	<%= f.submit t('.update', :default => "Update"), class: "button button-success" %>
+      </div>
+    </div>
   <% end %>
 
   <h3><%= t('.cancel_my_account', :default => 'Cancel my account') %></h3>

@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 20150320112203) do
     t.string   "uid",                    default: "",        null: false
     t.string   "name"
     t.string   "authority",              default: "pending", null: false
+    t.string   "image"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true

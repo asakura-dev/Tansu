@@ -671,3 +671,31 @@ $warning-dark: #ea4848;
   width:100%;
   top:50px;
 }
+
+
+#rotateRight, #rotateLeft{
+  margin:5px 0;
+  padding: 0px 10px;
+  border-radius: 2px;
+  text-decoration: none;
+  font-size: 14px;
+  box-sizing: border-box;
+  height: 30px;
+  display: inline-block;
+  line-height: 30px;
+  border:1px solid #555;
+  border-radius:4px;
+  background:#fff;
+  color:#555;
+  &:hover{
+    background:#ccc;
+  }
+}
+.loadFileWapper{
+  text-align:center;
+}
+#loadFile{
+  margin:10px 0;
+}
+
+

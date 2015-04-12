@@ -1,0 +1,22 @@
+.crop-container{
+  position: relative;     
+  border: 1px solid #555;
+}
+.ic_canvas{
+  position: absolute;
+  top:0;
+  left: 0;
+}
+.ic_cover_canvas{
+  cursor:move;
+  position: absolute;
+  top:0;
+  left: 0;
+}
+.ic_crop_canvas{
+  border: 1px solid #555;
+  position: absolute;
+  top:0px;
+  left: 510px;
+  display: none;
+}

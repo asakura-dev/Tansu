@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 class Users::RegistrationsController < Devise::RegistrationsController
-  before_action :configure_permitted_paramaters, only:[:update]
-
+  include CarrierwaveBase64Uploader
   def build_resource(hash=nil)
     hash[:uid] = User.create_unique_string
     super
@@ -17,11 +16,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
       resource.update_without_password(params)
     end
   end
-
-  private
-  def configure_permitted_paramaters
-    devise_parameter_sanitizer.for(:account_update) do |u|
-      u.permit(:name, :email, :password, :password_confirmation, :current_password)
+  def delete_icon()
+    if user_signed_in?
+      current_user.remove_image!
+      if current_user.save
+        render :json => {'status' => 'success'}
+      else
+        render :json => {'status' => 'failed'}
+      end
     end
-  end  
+  end
 end

@@ -60,3 +60,6 @@ gem 'annotate'
 
 ## PCとモバイルでビューを切り替える
 gem 'jpmobile', '4.1.0'
+
+## 画像のアップロード
+gem "carrierwave"

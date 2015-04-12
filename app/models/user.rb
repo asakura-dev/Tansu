@@ -33,6 +33,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :omniauthable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable,
   omniauth_providers: [:twitter, :github]
+  mount_uploader :image, ImageUploader
 
   before_save :when_confirmed
 
@@ -85,6 +86,12 @@ class User < ActiveRecord::Base
     end
   end
 
+  def base64_image
+    return @base64_image
+  end
+  def base64_image=(file)
+    @base64_image = file
+  end
   private 
   def when_confirmed
     # アカウントが有効化された時
@@ -93,5 +100,6 @@ class User < ActiveRecord::Base
     end
     true
   end
+  
   
 end

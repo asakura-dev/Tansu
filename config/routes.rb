@@ -7,6 +7,9 @@ Rails.application.routes.draw do
     :passwords => "users/passwords",
     :omniauth_callbacks => "users/omniauth_callbacks"
   }
+  devise_scope :user do
+    delete '/users_icon', to:'users/registrations#delete_icon'
+  end
 
   namespace :admin do
     # Directs /admin/products/* to Admin::ProductsController
