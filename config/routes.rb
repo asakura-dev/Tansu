@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 Rails.application.routes.draw do
   root 'home#show'
 
@@ -19,7 +20,13 @@ Rails.application.routes.draw do
       resource :request, :only => [:show, :update]
     end
   end
-  
+
+  # 備品(product)の作成・編集・削除は"/admin/products"以下に
+  scope :admin do
+    resource :products, :only => [:new, :create, :edit, :update, :delete]
+  end
+  # 備品(product)の表示は，"/products"以下に
+  resources :products, :only => [:index, :show]
   
   
   # The priority is based upon order of creation: first created -> highest priority.

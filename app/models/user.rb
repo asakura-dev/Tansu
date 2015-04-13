@@ -24,6 +24,7 @@
 #  uid                    :string(255)      default(""), not null
 #  name                   :string(255)
 #  authority              :string(255)      default("pending"), not null
+#  image                  :string(255)
 #
 
 # authority : owner or manager or member or pending
@@ -34,7 +35,9 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :confirmable,
   omniauth_providers: [:twitter, :github]
   mount_uploader :image, ImageUploader
-
+  validates :name, length: { maximum: 48 }, presence: true
+  validates :authority, presence: true
+  
   before_save :when_confirmed
 
   def self.find_for_twitter_oauth(auth, signed_in_resource=nil)
