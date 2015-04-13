@@ -27,7 +27,6 @@
 #  image                  :string(255)
 #
 
-# authority : owner or manager or member or pending
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :lockable, :timeoutable and :omniauthable
@@ -36,7 +35,8 @@ class User < ActiveRecord::Base
   omniauth_providers: [:twitter, :github]
   mount_uploader :image, ImageUploader
   validates :name, length: { maximum: 48 }, presence: true
-  validates :authority, presence: true
+  validates :authority, presence: true, :inclusion => ['owner', 'manager', 'member', 'pending', 'reject']
+  
   
   before_save :when_confirmed
 
