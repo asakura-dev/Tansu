@@ -4,10 +4,10 @@
       <a href="/">管理</a>
     </li>
     <li>
-      <a href="/">一覧</a>
+      <%= link_to "備品一覧", products_path%>
     </li>
     <li>
-      <a href="/">備品追加</a>
+      <%= link_to "備品追加",new_product_path %>
     </li>
     <li>
       <%= link_to "ユーザの追加と承認", admin_member_request_path %>

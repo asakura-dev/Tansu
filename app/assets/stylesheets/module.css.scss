@@ -172,6 +172,16 @@ $warning-dark: #ea4848;
 .block_content{
   border:1px solid $primary-dark;
 }
+.search_item_list{
+  border:1px solid $primary-dark;
+  padding:10px;
+  margin:10px 0;
+  min-height:200px;
+  background:#eee;
+  .search_item_button{
+    text-align:center;
+  }
+}
 
 .lending_nav{
   padding:10px 20px;
@@ -261,8 +271,9 @@ $warning-dark: #ea4848;
 }
 
 .product_small{
-  margin:0 5px 10px 5px;
+  margin:5px;
   padding:10px;
+  background:#fff;
   .inner_offset{
     padding:0 10px 0 0;
   }
@@ -272,6 +283,7 @@ $warning-dark: #ea4848;
   img{
     width:100%;
     border:1px solid #555;
+    height:auto;
   }
   a{
     font-size:12px;
@@ -297,6 +309,13 @@ $warning-dark: #ea4848;
     width:30px;
     height:30px;
     border:1px solid $primary;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 250px;
+    width: 340px;
+    margin: 10px 10px 10px 10px;
+    border-radius: 5px;
   }
   .fbox {
     position: relative;
@@ -394,6 +413,16 @@ $warning-dark: #ea4848;
   height: 30px;
   display: inline-block;
   line-height: 30px;
+}
+.button-small{
+  padding: 0px 10px;
+  border-radius: 2px;
+  text-decoration: none;
+  font-size: 12px;
+  box-sizing: border-box;
+  height: 20px;
+  line-height:20px;
+  display: inline-block;
 }
 .button-success{
   border:1px solid $primary-dark;
@@ -534,7 +563,7 @@ $warning-dark: #ea4848;
   }
 }
 
-.tabs {
+.tabs{
   .tab-buttons{
     ul{
       margin: 0;
@@ -546,22 +575,31 @@ $warning-dark: #ea4848;
 	height: 36px;
 	line-height: 36px;
 	margin: 0 0 0 10px;
-	padding:0px 20px;
+	padding:0px;
 	border-top: 1px solid #999;
-	border-left: 1px solid #999  ;
+	border-left: 1px solid #999;
 	border-right: 1px solid #999;
 	background: #fff;
 	border-top-left-radius: 2px;
 	border-top-right-radius: 2px;
 	&.actived{
 	  height: 37px;
+	  a{
+	    background:#fff;
+	  }
+	}
+	a{
+	  height:36px;
+	  display:block;
+	  padding:0 20px;
+	  text-decoration:none;
+	  background:#eee;
 	}
       }
     }
   }
   .tab-contents{
     border-top:1px solid #999;
-
   }
   .tab-content{
     min-height:500px;
@@ -571,7 +609,6 @@ $warning-dark: #ea4848;
       display:block;
     }
   }
-
 }
 
 .goods_form{
@@ -671,8 +708,6 @@ $warning-dark: #ea4848;
   width:100%;
   top:50px;
 }
-
-
 #rotateRight, #rotateLeft{
   margin:5px 0;
   padding: 0px 10px;

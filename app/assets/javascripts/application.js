@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require js.cookie
 //= require image-cropper
 //= require knockout
 

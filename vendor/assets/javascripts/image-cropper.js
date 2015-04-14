@@ -25,7 +25,7 @@ function dd(value){
     this.crop_ctx = this.getExtendedCanvasContext(this.$crop_canvas);
     this.$output = undefined;
     (function(){
-      self.cover_ctx.fillStyle = "rgba(250,250,250,0.8)";
+      self.cover_ctx.fillStyle = "rgba(230,230,230,0.8)";
       self.cover_ctx.fillRect(0,0,self.cover_ctx.width,self.cover_ctx.height);
       self.cover_ctx.strokeStyle = "#555555";
       var x = (self.cover_ctx.width - self.crop_ctx.width) / 2;
