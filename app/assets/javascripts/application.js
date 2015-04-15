@@ -17,6 +17,9 @@
 //= require knockout
 
 // Knockout.jsの拡張
+// イベントが先祖要素へ委譲(Progagation)されるのを防ぐ
+// Usage
+// <span data-bind="click: hogehoge, clickBubble: false">..
 ko.bindingHandlers.stopBubble = {
   init: function(element) {
     ko.utils.registerEventHandler(element, "click", function(event) {
@@ -28,13 +31,11 @@ ko.bindingHandlers.stopBubble = {
   }
 };
 
-// root_vmにknockout.jsのView Modelを追加していく
+// root_vmにknockout.jsのView Modelを追加するために使用
 // 一番最後に読み込まれるko_bind.jsで追加されたView ModelをViewに紐つける
 var root_vm = {};
 
 // .alert-noticeクラスのアラートメッセージは時間経過で消す
 $(function(){
-    $(".alert-notice").hide().delay(250).slideDown().delay(2500).slideUp(function() {
-	$(elem).remove();
-    });
+    $(".alert-notice").hide().delay(250).slideDown().delay(2500).slideUp();
 });
