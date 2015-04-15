@@ -7,6 +7,7 @@
 	    var mode = $(event.target).attr("href").replace("#","");
 	    self.mode(mode);
 	    Cookies.set('mode',mode);
+	    self.resetForm();
 	};
 	self.product = {
 	    title: ko.observable(""),
@@ -51,7 +52,7 @@ $(function(){
 	rotateRight: "#rotateRight",
 	rotateLeft: "#rotateLeft",
 	zoom: "#zoom",
-	output: "#user_base64_image"
+	output: "#product_base64_image"
     });
 
     

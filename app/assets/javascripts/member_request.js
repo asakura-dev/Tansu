@@ -5,8 +5,8 @@
 	function MemberRequest(id,name,image){
 	    this.id = id;
 	    this.name = name;
-	    if(image == "user_icon.png"){
-		this.image = "/assets/user_icon.png";
+	    if(image == "user_default.png"){
+		this.image = "/assets/user_default.png";
 	    }else{
 		this.image = image;
 	    }

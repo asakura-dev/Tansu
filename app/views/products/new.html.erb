@@ -21,7 +21,7 @@
       </div>
       <div class="tab-contents">
 	<div class="tab-content l-grid-row actived">
-	    <%= form_for @product , :html => {:class => "goods_form"} do |f| %>
+	    <%= form_for @product , :html => {:multipart => true, :class => "goods_form"} do |f| %>
 	      <% if @product.errors.any? %>
 		<div class="l-grid-row">
 		  <ul>
@@ -79,7 +79,7 @@
 		<%= f.label :name, "品名" %>
 	      </div>
 	      <div class="l-grid-10-12 l-align-left">
-		<%= f.text_field :name, :class => "input"%>
+		<%= f.text_field :name, :class => "input", :data => {:bind => "value: product.title"}%>
 	      </div>
 	    </div>
 	    <div class="l-grid-row clearfix">
@@ -87,7 +87,7 @@
 		<%= f.label :description, "説明"%>
 	      </div>
 	      <div class="l-grid-10-12 l-align-left">
-		<%= f.text_area :description, :class => "textarea" %>
+		<%= f.text_area :description, :class => "textarea", :data => {:bind => "value: product.description"} %>
 	      </div>
 	    </div>
 	    <div class="l-grid-row clearfix">

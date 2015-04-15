@@ -6,8 +6,8 @@
 	    this.id = id;
 	    this.name = name;
 	    this.authority = authority;
-	    if(image == "user_icon.png"){
-		this.image = "/assets/user_icon.png";
+	    if(image == "user_default.png"){
+		this.image = "/assets/user_default.png";
 	    }else{
 		this.image = image;
 	    }

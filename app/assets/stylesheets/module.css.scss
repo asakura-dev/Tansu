@@ -380,26 +380,38 @@ $warning-dark: #ea4848;
 }
 
 .pagination{
-  ul{
-    list-style:none;
-    li{
-      display:inline-block;
-      margin:5px 0 5px 5px;
-      a{
-	display:block;
-	font-size:12px;
-	padding:5px 10px;
-	background:#fff;
-	text-decoration:none;
-	border:1px solid $primary-dark;
-	color:$primary-dark;
-	&.actived{
-	  background:$primary-light;
-	}
-	&:hover{
-	  background:$primary-light;
-	  }
-      }
+  .disabled{
+    font-size:12px;
+    padding:5px;
+    background:#eee;
+    text-decoration:none;
+    border:1px solid #999;
+    color:#999;
+    text-align:center;
+    
+  }
+  .current{
+    font-style: normal;
+    font-size:12px;
+    padding:5px 5px;
+    background:#eee;
+    text-decoration:none;
+    border:1px solid #999;
+    color:#999;
+    text-align:center;
+  }
+  a{
+    font-size:12px;
+    padding:5px;
+    background:#fff;
+    text-decoration:none;
+    border:1px solid $primary-dark;
+    color:$primary-dark;
+    &.actived{
+      background:$primary-light;
+    }
+    &:hover{
+      background:$primary-light;
     }
   }
 }
@@ -501,8 +513,9 @@ $warning-dark: #ea4848;
 .goods_table{
   margin:20px 0;
   text-align:center;
+  border-collapse: collapse;
+  border-spacing: 0;
   thead{
-    
     border:1px solid #aaa;
     font-size:16px;
     background:#eee;
@@ -534,7 +547,7 @@ $warning-dark: #ea4848;
   }
 }
 .col_date{
-  width:100px;
+  width:150px;
 }
 .col_times{
   width:100px;
@@ -544,11 +557,6 @@ $warning-dark: #ea4848;
 }
 .col_edit{
   width:50px;
-  form{
-    button{
-      padding:0 5px;
-    }
-  }
 }
 
 .invitation_form{
@@ -726,9 +734,7 @@ $warning-dark: #ea4848;
     background:#ccc;
   }
 }
-.loadFileWapper{
-  text-align:center;
-}
+
 #loadFile{
   margin:10px 0;
 }

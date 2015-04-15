@@ -14,7 +14,7 @@
 class Product < ActiveRecord::Base
   validates :name, length: {maximum: 96}, presence: true
   validates :description, length: {maximum: 2048}
-  
+  mount_uploader :image, ImageUploader
   # フォームでbase64_imageというフォーム部品を表示させるために必要
   def base64_image
     return @base64_image

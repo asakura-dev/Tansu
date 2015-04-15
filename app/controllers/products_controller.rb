@@ -2,6 +2,7 @@
 class ProductsController < ApplicationController
   include CarrierwaveBase64Uploader
   def index
+    @products = Product.paginate(page: params[:page], :per_page => 10)
   end
 
   def new
@@ -11,7 +12,7 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     if @product.save
-      redirect_to new_products_path, notice: "備品を追加しました"
+      redirect_to new_product_path, notice: "備品を追加しました"
     else
       render 'new'
     end
@@ -31,6 +32,7 @@ class ProductsController < ApplicationController
   private
   def product_params
     base64_image = params[:product][:base64_image]
+    # base64エンコードの画像が含まれていたら，画像に変換してparamに追加
     unless base64_image.nil? || base64_image.empty?
       params[:product][:image] = base64_conversion(base64_image)
     end

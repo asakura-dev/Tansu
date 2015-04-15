@@ -14,11 +14,11 @@
 ActiveRecord::Schema.define(version: 20150412161137) do
 
   create_table "products", force: true do |t|
-    t.string   "name",        default: "", null: false
+    t.string   "name",        default: "",          null: false
     t.text     "description"
     t.string   "image"
-    t.integer  "count"
-    t.string   "status"
+    t.integer  "count",       default: 0,           null: false
+    t.string   "status",      default: "available", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

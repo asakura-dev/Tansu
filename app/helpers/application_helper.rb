@@ -20,4 +20,11 @@ module ApplicationHelper
   def authority_update_params
         params.require(:user).permit(:user_id, :authority)
   end
+  def rental_status(status)
+    case status
+      when "available"; "貸出可能"
+      when "rented_out"; "貸出中"
+      when "not_available"; "貸出不可備品"
+    end
+  end
 end
