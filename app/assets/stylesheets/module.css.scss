@@ -613,6 +613,7 @@ $warning-dark: #ea4848;
     min-height:500px;
     display:none;
     padding:10px;
+    box-sizing:border-box;
     &.actived{
       display:block;
     }
