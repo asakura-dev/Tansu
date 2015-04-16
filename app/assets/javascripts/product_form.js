@@ -28,6 +28,17 @@
 	self.product_input = ko.observable("");
 	self.product_search = function(){
 	    // ajax search
+	    $.ajax({
+		type: "GET",
+		url: "/third/product_search",
+		data:{
+		    type: "query",
+		    value: "JavaScript"
+		},
+		success:function(data){
+		    console.log(data);
+		}
+	    });
 	};
 	// 検索して取得した商品の情報をを格納する配列
 	self.search_results = ko.observableArray([""]);

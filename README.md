@@ -44,8 +44,17 @@ config.omniauth :twitter, ENV["TWITTER_CONSUMER_KEY"], ENV["TWITTER_CONSUMER_SEC
 ```ruby
 #./config/initializers/devise.rb 230行目あたり  
 config.omniauth :github , ENV["GITHUB_CONSUMER_KEY"], ENV["GITHUB_CONSUMER_SECRET"],
-  :callback_url => ENV["TANSU_URL"]+"/users/auth/github/callback"
+  :callback_url => "http://tansu.dev:3000/users/auth/github/callback"
 ```
 [Authorized applications](https://github.com/settings/applications)より，アプリを作成し，各キーを取得して設定してください．  
 アプリ作成の際のCallback URLは "http://あなたのホスト名/auth/github/callback"にしてください．  
 "http://tansu.dev:3000/auth/github/callback"を"http://あなたのホスト名/auth/github/callback"に書き換えてください．
+
+### Yahooショッピングの商品検索APIの設定
+```ruby
+#./config/application.rb 後ろあたり
+    config.yahoo_application_id = ENV["YAHOO_APPLICATION_ID"]
+  end
+end
+```
+[Yahoo!デベロッパーネットワーク](http://developer.yahoo.co.jp/)より，アプリを作成し，アプリケーションIDを所得して設定してください．

@@ -20,11 +20,13 @@ Rails.application.routes.draw do
       resource :request, :only => [:show, :update]
     end
   end
-
   scope :admin do
     resources :products
   end
   
+  namespace :third do
+    resource :product_search, :only => [:show]
+  end
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

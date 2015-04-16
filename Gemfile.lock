@@ -168,6 +168,7 @@ DEPENDENCIES
   devise
   devise-i18n
   devise-i18n-views
+  faraday
   jbuilder (~> 2.0)
   jpmobile (= 4.1.0)
   jquery-rails
