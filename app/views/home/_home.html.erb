@@ -1,7 +1,5 @@
 <h1>ホーム</h1>
-<% if current_user.authority == "owner" || current_user.authority == "manager" %>
-  <%= render "home/side"%>
-<% end %>
+<%= render "home/side"%>
 <div class="l-grid-9-12 l-align-left">
   <%= render "home/new_goods"%>
 </div>
