@@ -279,6 +279,11 @@ $warning-dark: #ea4848;
   }
   .info{
     padding:0 0 5px 0;
+    span{
+      font-size:10px;
+      line-height:12px;
+      display:block;
+    }
   }
   img{
     width:100%;
@@ -287,6 +292,7 @@ $warning-dark: #ea4848;
   }
   a{
     font-size:12px;
+    display:block;
   }
 }
 .product_comments{
@@ -312,8 +318,6 @@ $warning-dark: #ea4848;
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 250px;
-    width: 340px;
     margin: 10px 10px 10px 10px;
     border-radius: 5px;
   }

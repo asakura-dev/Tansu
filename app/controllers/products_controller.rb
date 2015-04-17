@@ -2,7 +2,7 @@
 class ProductsController < ApplicationController
   include CarrierwaveBase64Uploader
   def index
-    @products = Product.paginate(page: params[:page], :per_page => 10)
+    @products = Product.order("created_at DESC").paginate(page: params[:page], :per_page => 10)
   end
 
   def new
@@ -19,6 +19,7 @@ class ProductsController < ApplicationController
   end
 
   def show
+    @product = Product.find(params[:id])
   end
 
   def edit

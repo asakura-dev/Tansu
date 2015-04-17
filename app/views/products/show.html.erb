@@ -1,0 +1,54 @@
+<div class="l-constrained">
+  <h1>備品詳細</h1>
+  <div class="block_content product_small clearfix">
+    <div class="l-grid-2-12 l-align-left">
+      <div class="inner_offset">
+	<%= image_tag @product.image.url %>
+      </div>
+    </div>
+    <div class="l-grid-8-12 l-align-left">
+      <div class="inner_offset">
+	<span><%= @product.name %></span>
+	<p><%= @product.description %></p>
+      </div>
+    </div>
+    <div class="l-grid-2-12 l-align-left">
+      <a href="/" class="link_btn link_btn_success">借りる</a>
+    </div>
+
+  </div>
+  <h2>コメント</h2>
+  <div class="product_comments block_content">
+    <% 5.times do %>
+      <div class="product_comment l-grid-12-12 clearfix l-align-center">
+	<div class="l-grid-1-12 l-align-left">
+          <div class="inner_offset">
+	    <img src="https://pbs.twimg.com/profile_images/541976875929571328/vnbAiTRn_400x400.png"><br>
+	    <a href="">@asakura_dev</a>
+	  </div>
+	</div>
+	<div class="l-grid-11-12 l-align-left">
+	  <div class="fbox font-large">気の利いたコメント気の利いたコメント気の利いたコメント気の利いたコメント気の利いたコメント</div>
+	</div>
+      </div>
+    <% end %>
+    <h3 class="border_heading">コメントする</h3>
+    <div class="product_comment clearfix">
+      <form class="product_comment_form">
+	<div class="l-grid-1-12 l-align-left">
+          <div class="inner_offset">
+	    <img src="https://pbs.twimg.com/profile_images/541976875929571328/vnbAiTRn_400x400.png"><br>
+	    <a href="">@asakura_dev</a>
+	  </div>
+	</div>
+	<div class="l-grid-11-12 l-align-left">
+	  <div class="fbox">
+	    <textarea>
+	    </textarea>
+	  </div>
+	  <button class="button button-success l-align-right">送信</button>
+	</div>
+      </form>
+    </div>
+  </div>
+</div>
