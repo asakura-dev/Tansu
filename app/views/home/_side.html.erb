@@ -1,5 +1,5 @@
 <div class="l-side-col l-grid-3-12 l-align-left">
-  <% if current_user.authority == "owner" || current_user.authority == "manager" %>
+  <% if current_user.owner_or_manager? %>
     <div class="l-side-row">
       <%= render 'admin/menu_panel' %>
     </div>

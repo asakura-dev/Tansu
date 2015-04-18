@@ -95,6 +95,13 @@ class User < ActiveRecord::Base
   def base64_image=(file)
     @base64_image = file
   end
+
+  def owner?
+    self.authority == "owner"
+  end
+  def owner_or_manager?
+    self.authority == "owner" || self.authority == "manager"
+  end
   private 
   def when_confirmed
     # アカウントが有効化された時

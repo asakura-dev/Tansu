@@ -15,7 +15,7 @@
     <div class="l-grid-2-12 l-align-left">
       <div class="vertical_btns">
 	<%= link_to "借りる","",class: "link_btn link_btn_success" %>
-	<% if current_user.authority == "owner" || current_user.authority == "manager" %>
+	<% if current_user.owner_or_manager? %>
 	  <%= link_to "備品を削除",product_path(@product), class: "link_btn link_btn_warning", :method => :delete, data:{:confirm => "本当に削除しますか？"}%>
 	  <%= link_to "編集", edit_product_path(@product), class: "link_btn link_btn_info"%>
 	<% end %>
