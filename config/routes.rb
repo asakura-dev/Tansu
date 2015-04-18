@@ -20,9 +20,12 @@ Rails.application.routes.draw do
       resource :request, :only => [:show, :update]
     end
   end
+  resources :products, :only => [:index, :show]
   scope :admin do
-    resources :products
+    resources :products, :only => [:new,:create, :update,:destroy,:edit]
+    match 'products' => 'products#admin_index', :via => :get, as: 'admin_products'
   end
+  
   
   namespace :third do
     resource :product_search, :only => [:show]

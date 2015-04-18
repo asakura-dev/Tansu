@@ -1,0 +1,36 @@
+<div class="l-constrained clearfix">
+  <h1>管理画面</h1>
+  <%= render "admin/side" %>
+  <div class="l-grid-9-12 l-align-left">
+    <h2>備品一覧</h2>
+    <table class="goods_table l-grid-row">
+      <thead>
+	<tr>
+	  <th class="col_goods"">品名</th>
+	  <th class="col_date">登録日時</th>
+	  <th class="col_times">累計貸出回数</th>
+	  <th class="col_status">貸出可否</th>
+	  <th ckass="col_edit"></th>
+	</tr>
+      <tbody>
+	<% @products.each do |product|  %>
+	  <tr>
+	    <td class="col_goods">
+	      <%= link_to product.name, product_path(product) %>
+	    </td>
+	    <td class="col_date"><%= l product.created_at, format: :short%></td>
+	    <td class="col_times"><%= product.count %></td>
+	    <td class="col_status"><%= rental_status(product.status)%></td>
+	    <td class="col_edit">
+	      <%= link_to "編集", edit_product_path(product), class: "link_btn link_btn_success" %>
+	    </td>
+	  </tr>
+	<% end %>
+      </tbody>
+    </table>
+    <div class="l-constrained pagination">
+      <%= will_paginate @products, previous_label: "前", next_label: "次"%>
+    </div>
+    
+  </div>
+</div>

@@ -4,6 +4,9 @@ class ProductsController < ApplicationController
   def index
     @products = Product.order("created_at DESC").paginate(page: params[:page], :per_page => 10)
   end
+  def admin_index
+    @products = Product.order("created_at DESC").paginate(page: params[:page], :per_page => 10)
+  end
 
   def new
     @product = Product.new
