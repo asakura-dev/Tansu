@@ -200,7 +200,12 @@ $warning-dark: #ea4848;
     font-weight:bold;
   }
 }
-
+.vertical_btns{
+  padding:5px 0;
+  .link_btn{
+    margin:0 0 10px 0;
+  }
+}
 .link_btn{
   display: block;
   text-decoration: none;
@@ -220,6 +225,15 @@ $warning-dark: #ea4848;
     background:#ccc;
   }
 }
+.link_btn_info{
+  border:1px solid #5cb85c;
+  background:#e0fce0;
+  color:#4cae4c;
+  &:hover{
+    background:#4cae4c;
+    color:#fff;
+  }
+}
 .link_btn_success{
   border: 1px solid $primary-dark;
   background:#fff;
@@ -228,6 +242,7 @@ $warning-dark: #ea4848;
     background:$primary-light;
   }
 }
+
 .link_btn_twitter{
   background:#3aaaec;
   border:1px solid #1593de;

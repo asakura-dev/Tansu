@@ -28,7 +28,6 @@ var cropper;
 	    // クッキーに保存して，次回訪問時も前回選択したモードが選択されるようにする
 	    Cookies.set('mode',mode);
 	    // モード変更時は，フォームの中身を一時消去する
-	    self.resetForm();
 	};
 	// フォーム要素のオブジェクト
 	self.product = {
@@ -122,10 +121,6 @@ var cropper;
 	
 	// 検索して取得した商品の情報をを格納する配列
 	self.search_results = ko.observableArray();
-	self.resetForm = function(){
-	    self.product.title("");
-	    self.product.description("");
-	};
 	self.setForm = function(product_object){
 	    self.product.title(product_object.title);
 	    self.product.description(product_object.description);

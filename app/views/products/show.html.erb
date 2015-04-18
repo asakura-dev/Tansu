@@ -13,7 +13,12 @@
       </div>
     </div>
     <div class="l-grid-2-12 l-align-left">
-      <a href="/" class="link_btn link_btn_success">借りる</a>
+      <div class="vertical_btns">
+	<% if current_user.authority == "owner" || current_user.authority == "manager" %>
+	  <%= link_to "編集", edit_product_path(@product), class: "link_btn link_btn_info"%>
+	<% end %>
+	<%= link_to "借りる","",class: "link_btn link_btn_success" %>
+      </div>
     </div>
 
   </div>

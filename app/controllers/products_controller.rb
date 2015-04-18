@@ -26,9 +26,25 @@ class ProductsController < ApplicationController
   end
 
   def edit
+    @product = Product.find(params[:id])
   end
 
   def update
+    @product = Product.find(params[:id])
+    if @product.update(product_params)
+      redirect_to product_path(@product)
+    else
+      render 'edit'
+    end
+  end
+  def delete_image
+    product = Product.find(params[:id])
+    product.remove_image!
+    if product.save
+      render :json => {'status' => 'success'}
+    else
+      render :json => {'status' => 'faild'}
+    end
   end
 
   def destroy
