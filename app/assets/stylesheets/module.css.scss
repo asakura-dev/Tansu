@@ -176,10 +176,20 @@ $warning-dark: #ea4848;
   border:1px solid $primary-dark;
   padding:10px;
   margin:10px 0;
-  min-height:200px;
-  background:#eee;
+  height:230px;
+  overflow:scroll;
+  .loading{
+    text-align:center;
+    padding:35px 0 0 0;
+  }
   .search_item_button{
     text-align:center;
+  }
+  .inline_block{
+    display:inline-block;
+  }
+  .wrapper{
+    overflow:scroll;
   }
 }
 
@@ -378,7 +388,7 @@ $warning-dark: #ea4848;
   }
 }
 
-.anotation{
+.annotation{
   color:#555;
   font-size:12px;
 }

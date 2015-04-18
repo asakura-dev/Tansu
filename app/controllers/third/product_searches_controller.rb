@@ -4,9 +4,13 @@ module Third
     before_action :owner_or_manager
     def show
       if ["isbn", "query"].include?(params["type"])
-        response_data = search_from_yahoo(params["type"],params["value"])
+        @data = search_from_yahoo(params["type"],params["value"])
+        @results =  @data["ResultSet"]["0"]["Result"]
+        @results.delete("Request")
+        @results.delete("Modules")
+        @results = @results.values
       end
-    ennd
+    end
     private
     def search_from_yahoo(type, value)
       yahoo_api = Faraday.new(:url => 'http://shopping.yahooapis.jp') do |faraday|
@@ -20,6 +24,5 @@ module Third
       end
       JSON.parse(res.body)
     end
-    
   end
 end

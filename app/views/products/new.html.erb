@@ -39,7 +39,7 @@
 		  <div class="l-grid-10-12 l-align-left">
 		    <div class="input_box">
 		      <input id="barcode" name="barcode" type="text" class="l-align-left" data-bind="value: barcode_input">
-		      <button type="button" class="l-align-right">検索</button>
+		      <button type="button" class="l-align-right" data-bind="click: barcode_search">検索</button>
 		    </div>
 		  </div>
 		</div>
@@ -52,39 +52,47 @@
 	      <div class="l-grid-10-12 l-align-left">
 		<div class="input_box">
 		  <input id="product_input" name="product_input" type="text" class="l-align-left" data-bind="value: product_input">
-		  <button type="button" class="l-align-right">検索</button>
+		  <button type="button" class="l-align-right" data-bind="click: product_search">検索</button>
 		</div>
 	      </div>
 	    </div>
 
 	    <div class="l-grid-row clearfix" data-bind="if: mode() == 'barcode' || mode() == 'product_search'">
 	      <h4>検索結果</h4>
-	      <div class="search_item_list clearfix" data-bind="foreach: search_results">
-		  <div class="l-grid-2-12 l-align-left">
+	      <div class="search_item_list clearfix">
+		<div class="loading" data-bind="visible: loading">
+		  <%= image_tag "loading.gif" %>
+		</div>
+		<div class="clearfix" data-bind="foreach: search_results">
+		  <div class="l-grid-2-12 inline_block">
 		    <div class="block_content product_small">
 		      <a href="/">
-			<%= image_tag "example_book.png",:class => "content-img"%>
+			<img src="" class="content-img" data-bind="attr: {src: image_url}">
 		      </a>
-		      <a href="/">JavaScript第六版</a>
+		      <a href="/" data-bind="text: short_name "></a>
 		    </div>
 		    <div class="search_item_button">
-		      <button type="button" class="button-small button-success">選択</button>
+		      <button type="button" class="button-small button-success" data-bind="click:select">選択</button>
 		    </div>
 		  </div>
+		</div>
 	      </div>
 	    </div>
 	    
 	    <div class="l-grid-row clearfix">
 	      <div class="l-grid-2-12 l-align-left">
-		<%= f.label :name, "品名" %>
+		<%= f.label :name, "品名(必須)" %>
+		<div class="annotation">※96文字以内</div>
 	      </div>
 	      <div class="l-grid-10-12 l-align-left">
-		<%= f.text_field :name, :class => "input", :data => {:bind => "value: product.title"}%>
+		<%= f.text_field :name, :class => "input", :data => {:bind => "value: product.name"}%>
 	      </div>
 	    </div>
 	    <div class="l-grid-row clearfix">
 	      <div class="l-grid-2-12 l-align-left">
-		<%= f.label :description, "説明"%>
+		<%= f.label :description, "説明(必須)"%>
+		<div class="annotation">
+		  ※2048文字以内</div>
 	      </div>
 	      <div class="l-grid-10-12 l-align-left">
 		<%= f.text_area :description, :class => "textarea", :data => {:bind => "value: product.description"} %>

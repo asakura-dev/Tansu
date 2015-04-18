@@ -50,7 +50,7 @@ function dd(value){
         this.pageX = e.pageX;
         this.pageY = e.pageY;
     });
-    $(".ic_cover_canvas").on("mouseup",function(e){
+    $(".ic_cover_canvas").on("mouseup mouseout",function(e){
         self.updateCroppedImage();
         self.setCroppedImageToElem();
         this.touched = false;
@@ -230,6 +230,22 @@ function dd(value){
           cropper.$output.val(cropper.$crop_canvas.get(0).toDataURL("image/png"));
         }
       }
+    },
+    load: function(url){
+	var image = new Image();
+	image.setAttribute('crossOrigin', 'anonymous');
+        image.onload = function (){
+            cropper.image = image;
+            var size = cropper.getFitSize(cropper.angle);
+            cropper.setSize(size);
+            var pos = cropper.getCenterPosition(size["width"],size["height"]);
+            cropper.setPos(pos);
+            cropper.ctx.drawImageWithAngle(image,pos["x"],pos["y"],size["width"],size["height"],cropper.angle);
+            cropper.updateCroppedImage();
+            cropper.setCroppedImageToElem();
+        };
+        // evt.target.resultにはbase64エンコーディングされた画像が入っている
+        image.src = url;
     },
     // 特定の要素に，特定の動作(イベント)を紐つける
     // 引数2つの場合
