@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 class ProductsController < ApplicationController
   include CarrierwaveBase64Uploader
+  before_action :authenticate_user!
+  before_action :owner_or_manager, :only => [:admin_index, :new, :create, :edit, :update, :delete_image, :destroy]
   def index
     @products = Product.order("created_at DESC").paginate(page: params[:page], :per_page => 10)
   end
@@ -33,7 +35,7 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     if @product.update(product_params)
       redirect_to product_path(@product)
-    else
+    elsep
       render 'edit'
     end
   end
