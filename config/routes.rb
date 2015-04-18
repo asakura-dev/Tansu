@@ -20,9 +20,9 @@ Rails.application.routes.draw do
       resource :request, :only => [:show, :update]
     end
   end
-  resources :products, :only => [:index, :show,:update]
+  resources :products, :only => [:index,:create, :show,:update, :destroy]
   scope :admin do
-    resources :products, :only => [:new,:create,:destroy,:edit]
+    resources :products, :only => [:new,:edit]
     match 'products' => 'products#admin_index', :via => :get, as: 'admin_products'
     delete 'products/:id/image', to:'products#delete_image'
   end
