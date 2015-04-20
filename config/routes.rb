@@ -2,32 +2,43 @@
 Rails.application.routes.draw do
   root 'home#show'
 
+  # サインアップ・ログイン・会員情報の編集等
   devise_for :users, :controllers => {
     :sessions => "users/sessions",
     :registrations => "users/registrations",
     :passwords => "users/passwords",
     :omniauth_callbacks => "users/omniauth_callbacks"
   }
+  # Ajax経由でユーザーアイコンを削除するためのルート
   devise_scope :user do
     delete '/users_icon', to:'users/registrations#delete_icon'
   end
-
+  # 管理者周り
   namespace :admin do
-    # Directs /admin/products/* to Admin::ProductsController
-    # (app/controllers/admin/products_controller.rb)
+    # メンバーの管理周り
     namespace :member do
+      # 権限の管理
       resource :authority, :only => [:show, :update]
+      # ユーザの参加承認を管理
       resource :request, :only => [:show, :update]
     end
   end
+
+  # 備品の周り
   resources :products, :only => [:index,:create, :show,:update, :destroy]
+  # 備品の追加・編集は/admin/products以下のルートにする
   scope :admin do
     resources :products, :only => [:new,:edit]
+    # 管理者用のテーブル形式の備品一覧ページ
     match 'products' => 'products#admin_index', :via => :get, as: 'admin_products'
+    # Ajax経由で画像を削除するためのルート
     delete 'products/:id/image', to:'products#delete_image'
   end
   
-  
+  # 貸出管理の周り
+  resources :rental, :only => [:create, :update]
+
+  # 外部の商品検索APIを叩いてJSONを返すルート
   namespace :third do
     resource :product_search, :only => [:show]
   end
