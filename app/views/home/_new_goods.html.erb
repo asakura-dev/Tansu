@@ -6,11 +6,16 @@
   <div class="l-grid-2-12 l-align-left">
     <div class="product_small">
       <div class="info l-grid-row">
-	<span>
+	<span class="date">
 	  <%= l product.created_at, format: :short %>
 	</span>
       </div>
-      <%= link_to image_tag(product.image.url), product_path(product)%>
+      <div>
+	<% unless product.lendable? %>
+	  <span class="hover_batch">貸出中</span>
+	<% end %>
+	<%= link_to image_tag(product.image.url), product_path(product)%>
+      </div>
       <%= link_to truncate(product.name, :length => 30, :separator => "..."), product_path(product)%>
     </div>
   </div>

@@ -10,9 +10,9 @@
     </thead>
     <tbody>
       <tr>
-	<th>5</th>
-	<th>10</th>
-	<th>6</th>
+	<th><%= Lending.count("all") %></th>
+	<th><%= Lending.count("current_month") %></th>
+	<th><%= Lending.count("last_month") %></th>
       </tr>
     </tbody>
   </table>

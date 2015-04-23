@@ -14,7 +14,13 @@
     </div>
     <div class="l-grid-2-12 l-align-left">
       <div class="vertical_btns">
-	<%= link_to "借りる","",class: "link_btn link_btn_success" %>
+	<% if @product.lendable? %>
+	  <%= link_to "借りる",lending_index_path(product_id: @product.id),method: :post,class: "link_btn link_btn_success" %>
+	<% elsif @product.latest_lending.user == current_user %>
+	  <%= link_to "返却する", lending_path(@product.latest_lending, status: "returned"), method: :patch ,class: "link_btn link_btn_success"%>
+	<% else %>
+	  <span class="link_btn link_btn_default">貸出中です</span>
+	<% end %>
 	<% if current_user.owner_or_manager? %>
 	  <%= link_to "備品を削除",product_path(@product), class: "link_btn link_btn_warning", :method => :delete, data:{:confirm => "本当に削除しますか？"}%>
 	  <%= link_to "編集", edit_product_path(@product), class: "link_btn link_btn_info"%>

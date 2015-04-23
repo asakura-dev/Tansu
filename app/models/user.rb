@@ -36,9 +36,15 @@ class User < ActiveRecord::Base
   mount_uploader :image, ImageUploader
   validates :name, length: { maximum: 48 }, presence: true
   validates :authority, presence: true, :inclusion => ['owner', 'manager', 'member', 'pending', 'reject']
-  
+  has_many :lendings
   
   before_save :when_confirmed
+
+  def unreturned_lendings
+    self.lendings.select{|lending|
+      lending.status == "unreturned"
+    }
+  end
 
   def self.find_for_twitter_oauth(auth, signed_in_resource=nil)
     user = User.where(:provider => auth.provider, :uid => auth.uid).first

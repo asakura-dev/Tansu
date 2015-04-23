@@ -36,7 +36,7 @@ Rails.application.routes.draw do
   end
   
   # 貸出管理の周り
-  resources :rental, :only => [:create, :update]
+  resources :lending, :only => [:create, :update]
 
   # 外部の商品検索APIを叩いてJSONを返すルート
   namespace :third do

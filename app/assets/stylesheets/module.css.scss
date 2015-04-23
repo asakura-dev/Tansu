@@ -309,16 +309,40 @@ $warning-dark: #ea4848;
   margin:5px;
   padding:10px;
   background:#fff;
+  div{
+    position:relative;
+  }
   .inner_offset{
     padding:0 10px 0 0;
   }
   .info{
-    padding:0 0 5px 0;
+    padding:0 0 2px 0;
     span{
       font-size:10px;
       line-height:12px;
       display:block;
     }
+  }
+  .hover_batch{
+    position:absolute;
+    top:2px;
+    left:2px;
+    font-size:10px;
+    padding:0 5px;
+    border-radius:2px;
+    background:#fff;
+    border:1px solid #555;
+    border-radius:2px;
+    color:#555;
+  }
+  .batch{
+    font-size:10px;
+    padding:0 5px;
+    border-radius:2px;
+    background:#fff;
+    border:1px solid #555;
+    border-radius:2px;
+    color:#555;
   }
   img{
     width:100%;

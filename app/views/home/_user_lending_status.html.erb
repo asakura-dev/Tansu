@@ -1,0 +1,32 @@
+<%= content_for :javascript do %>
+  <%= javascript_include_tag :user_lending_status %>
+<% end %>
+<div class="user_lending_status">
+  <div class="tab-nav clearfix">
+    <div class="l-grid-1-2 l-align-left">
+      <button class="actived">貸出状況</button>
+    </div>
+    <div class="l-grid-1-2 l-align-left">
+      <button>予約状況</button>
+    </div>
+  </div>
+  <div class="tab-content">
+    <div class="content">
+      <ul>
+	<% current_user.unreturned_lendings.each do |lending|%>
+	<li class="clearfix">
+          <div class="l-grid-10-12 l-align-left">
+	    <p class="deadline">返却期限：<%= l lending.deadline, format: :short%></p>
+	    <a class="title" href="/">
+	      <%= lending.product.name %>
+	    </a>
+	  </div>
+	  <div class="l-grid-2-12 l-align-right">
+	    <%= link_to "返却", lending_path(lending, status: "returned"), method: :patch ,class: "link_btn link_btn_success"%>
+	  </div>
+	</li>
+	<% end %>
+      </ul>
+    </div>
+  </div>
+</div>

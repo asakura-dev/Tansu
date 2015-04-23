@@ -78,8 +78,7 @@
 	    if (elem.nodeType === 1) {
 		$(elem).hide().slideDown();
 	    }
-	};
-	
+	};	
 	// 参加申請のリクエストのリスト
 	self.requests = ko.observableArray();
 	// 拒否済みのリクエストのリスト

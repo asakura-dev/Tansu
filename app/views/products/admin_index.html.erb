@@ -20,7 +20,7 @@
 	    </td>
 	    <td class="col_date"><%= l product.created_at, format: :short%></td>
 	    <td class="col_times"><%= product.count %></td>
-	    <td class="col_status"><%= rental_status(product.status)%></td>
+	    <td class="col_status"><%= product_status(product.status)%></td>
 	    <td class="col_edit">
 	      <%= link_to "編集", edit_product_path(product), class: "link_btn link_btn_success" %>
 	    </td>

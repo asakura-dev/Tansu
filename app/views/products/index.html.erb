@@ -10,11 +10,16 @@
 	<div class="l-grid-row clearfix">
 	  <div class="l-grid-1-4 l-align-left">
 	    <div class="inner_offset">
+	      <% unless product.lendable? %>
+		<span class="hover_batch">貸出中</span>
+	      <% end %>
 	      <%= link_to image_tag(product.image.url), product_path(product)%>
 	    </div>
 	  </div>
 	  <div class="l-grid-3-4 l-align-left">
+	    
 	    <%= link_to truncate(product.name, :length => 30, :separator => "..."), product_path(product)%>
+	    
 	    <p>
 	      <%= truncate(product.description, :length => 100, :separator => "...") %>
 	    </p>
