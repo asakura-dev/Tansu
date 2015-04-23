@@ -108,6 +108,13 @@ class User < ActiveRecord::Base
   def owner_or_manager?
     self.authority == "owner" || self.authority == "manager"
   end
+  def member?
+    if self.owner_or_manager? || self.authority == "member"
+      true
+    else
+      false
+    end
+  end
   private 
   def when_confirmed
     # アカウントが有効化された時

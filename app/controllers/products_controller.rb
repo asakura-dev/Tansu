@@ -2,6 +2,7 @@
 class ProductsController < ApplicationController
   include CarrierwaveBase64Uploader
   before_action :authenticate_user!
+  before_action :member
   before_action :owner_or_manager, :only => [:admin_index, :new, :create, :edit, :update, :delete_image, :destroy]
   def index
     @products = Product.order("created_at DESC").paginate(page: params[:page], :per_page => 10)
