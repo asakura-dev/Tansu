@@ -1,5 +1,17 @@
 <div class="l-constrained">
-  <h1>備品詳細</h1>
+  <div class="l-grid-row clearfix">
+    <div class="l-grid-6-12 l-align-left">
+      <h1>備品詳細</h1>
+    </div>
+    <div class="l-grid-6-12 l-align-right">
+      <% if current_user.owner_or_manager? %>
+	<div class="product_toolbox">
+	  <%= link_to "削除",product_path(@product), class: "link_btn link_btn_warning", :method => :delete, data:{:confirm => "本当に削除しますか？"}%>
+	  <%= link_to "編集", edit_product_path(@product), class: "link_btn link_btn_info"%>
+	</div>
+      <% end %>
+    </div>
+  </div>
   <div class="block_content product_small clearfix">
     <div class="l-grid-2-12 l-align-left">
       <div class="inner_offset">
@@ -8,7 +20,7 @@
     </div>
     <div class="l-grid-8-12 l-align-left">
       <div class="inner_offset">
-	<span><%= @product.name %></span>
+	<h1><%= @product.name %></h1>
 	<p><%= @product.description %></p>
       </div>
     </div>
@@ -21,10 +33,7 @@
 	<% else %>
 	  <span class="link_btn link_btn_default">貸出中です</span>
 	<% end %>
-	<% if current_user.owner_or_manager? %>
-	  <%= link_to "備品を削除",product_path(@product), class: "link_btn link_btn_warning", :method => :delete, data:{:confirm => "本当に削除しますか？"}%>
-	  <%= link_to "編集", edit_product_path(@product), class: "link_btn link_btn_info"%>
-	<% end %>
+	
       </div>
     </div>
 
