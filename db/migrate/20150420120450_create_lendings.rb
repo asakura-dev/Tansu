@@ -7,5 +7,6 @@ class CreateLendings < ActiveRecord::Migration
       t.string :status
       t.timestamps
     end
+    add_index :lendings, [:product_id, :user_id]
   end
 end
