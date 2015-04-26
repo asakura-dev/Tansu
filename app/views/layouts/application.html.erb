@@ -3,7 +3,7 @@
 <head>
   <title>Tansu</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
-
+  <%= include_gon %>
   <%= javascript_include_tag :application %>
   <%= javascript_include_tag :dropdown %>
   <%= yield :javascript %>

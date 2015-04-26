@@ -15,6 +15,9 @@
 	  </div>
 	</div>
       <% end %>
+      <% if flash[:notice] %>
+	<% flash[:notice]=nil %>
+      <% end %>
     </div>
     <div class="l-constrained">
       <%= link_to 'Tansu', root_path, class: "logo link l-align-left"%>

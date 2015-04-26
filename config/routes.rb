@@ -25,7 +25,10 @@ Rails.application.routes.draw do
   end
 
   # 備品の周り
-  resources :products, :only => [:index,:create, :show,:update, :destroy]
+  resources :products, :only => [:index,:create, :show,:update, :destroy] do
+    resource :tags, :only => [:show,:create, :destroy]
+  end
+  
   # 備品の追加・編集は/admin/products以下のルートにする
   scope :admin do
     resources :products, :only => [:new,:edit]

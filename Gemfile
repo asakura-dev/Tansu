@@ -66,3 +66,9 @@ gem "carrierwave"
 
 ## HTTPクライアントライブラリ
 gem 'faraday'
+
+## タグ管理
+gem 'acts-as-taggable-on', '~> 3.4'
+
+# サーバからJavaScriptに値を渡す
+gem 'gon', '~> 4.0'

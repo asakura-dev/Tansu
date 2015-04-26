@@ -1,3 +1,6 @@
+<%= content_for :javascript do %>
+  <%= javascript_include_tag :product_tags %>
+<% end %>
 <div class="l-constrained">
   <div class="l-grid-row clearfix">
     <div class="l-grid-6-12 l-align-left">
@@ -13,31 +16,47 @@
     </div>
   </div>
   <div class="block_content product_small clearfix">
-    <div class="l-grid-2-12 l-align-left">
-      <div class="inner_offset">
-	<%= image_tag @product.image.url %>
+    <div class="l-grid-row clearfix">
+      <div class="l-grid-2-12 l-align-left">
+	<div class="inner_offset">
+	  <%= image_tag @product.image.url %>
+	</div>
       </div>
-    </div>
-    <div class="l-grid-8-12 l-align-left">
-      <div class="inner_offset">
-	<h1><%= @product.name %></h1>
-	<p><%= @product.description %></p>
+      <div class="l-grid-8-12 l-align-left">
+	<div class="inner_offset">
+	  <h1><%= @product.name %></h1>
+	  <p><%= @product.description %></p>
+	</div>
       </div>
-    </div>
-    <div class="l-grid-2-12 l-align-left">
-      <div class="vertical_btns">
-	<% if @product.lendable? %>
-	  <%= link_to "借りる",lending_index_path(product_id: @product.id),method: :post,class: "link_btn link_btn_success" %>
-	<% elsif @product.latest_lending.user == current_user %>
-	  <%= link_to "返却する", lending_path(@product.latest_lending, status: "returned"), method: :patch ,class: "link_btn link_btn_success"%>
-	<% else %>
-	  <span class="link_btn link_btn_default">貸出中です</span>
-	<% end %>
+      <div class="l-grid-2-12 l-align-left">
+	<div class="vertical_btns">
+	  <% if @product.lendable? %>
+	    <%= link_to "借りる",lending_index_path(product_id: @product.id),method: :post,class: "link_btn link_btn_success" %>
+	  <% elsif @product.latest_lending.user == current_user %>
+	    <%= link_to "返却する", lending_path(@product.latest_lending, status: "returned"), method: :patch ,class: "link_btn link_btn_success"%>
+	  <% else %>
+	    <span class="link_btn link_btn_default">貸出中です</span>
+	  <% end %>
 	
+	</div>
       </div>
     </div>
-
+    <div class="l-grid-row tags-wrapper" data-bind="with: root_vm.product_tags_vm">
+      <button class="edit_button" data-bind="click:toggle, text:btn_text"></button>
+      <div class="add_box" data-bind="visible: editing" style="display:none;">
+	<input type="text" data-bind="value: input, click: reset_message">
+	<button data-bind="click: addTag">追加</button>
+	<span class="error" data-bind="text:error_message"></span>
+      </div>
+      <!-- ko foreach: tags -->
+      <div class="tag">
+	<a href="" data-bind="text: $data, attr: {href: '/products?tag='+encodeURIComponent($data)}"></a>
+	<button data-bind="visible: $parent.editing, click: $parent.remove">x</button>
+      </div>
+      <!-- /ko -->
+    </div>
   </div>
+  
   <h2>コメント</h2>
   <div class="product_comments block_content">
     <% 5.times do %>

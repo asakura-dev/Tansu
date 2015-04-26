@@ -12,7 +12,7 @@ class LendingController < ApplicationController
       deadline = Time.now + 1.week
       lending = Lending.new(user_id: user_id, product_id: @product.id, deadline: deadline, status: "unreturned")
       if lending.save
-        redirect_to product_path(@product)
+        redirect_to product_path(@product), notice: "貸し出されました"
       else
         redirect_to product_path(@product), alert: faild_message
       end

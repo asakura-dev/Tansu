@@ -817,4 +817,84 @@ $warning-dark: #ea4848;
   margin:10px 0;
 }
 
+.tags-wrapper{
+  .tag{
+    margin:0 0 2px 10px;
+    display:inline-block;
+    &:before{
+      content: ' ';
+      width: 0px;
+      height: 0px;
+      position: absolute;
+      border: 10px solid transparent;
+      border-right: 7px solid #555;
+      top: 3px;
+      left: -17px;
+    }
+    a{
+      display:inline-block;
+      height:16px;
+      font-size:14px;
+      line-height:16px;
+      background:#555;
+      color:#fff;
+      padding:2px 5px;
+      text-decoration:none;
+    }
+    button{
+      margin:0 0 0 2px;
+      border:1px solid $warning;
+      background:$warning;
+      color: #fff;
+      width:20px;
+      height:20px;
+      line-height:20px;
+      border-radius:50%;
+      font-size:15px;
+      text-align:center;
+      vertical-align:middle;
+    }
+  }
+  .add_box{
+    margin:0 0 2px 5px;
+    display:inline-block;
+    .error{
+      color:$warning;
+    }
+    input{
+      width:100px;
+      font-size:15px;
+      padding:0 5px;
+      height:25px;
+      border:1px solid #555;
+    }
+    button{
+      margin:0 0 0 2px;
+      height:25px;
+      border: 1px solid #5cb85c;
+      background: #e0fce0;
+      color: #4cae4c;
+      padding:0 5px;
+      outline: none;
+      &:hover{
+	background: #5cb85c;
+	color:#fff;
+      }
+    }
+  }
+  .edit_button{
+    margin:0 10px 0 0;
+    height:25px;
+    border: 1px solid #5cb85c;
+    background: #e0fce0;
+    color: #4cae4c;
+    padding:0 5px;
+    outline: none;
+    &:hover{
+      background: #5cb85c;
+      color:#fff;
+    }
+  }
+}
+
 

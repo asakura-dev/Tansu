@@ -17,6 +17,11 @@ class Product < ActiveRecord::Base
   has_many :lendings, ->{order ("updated_at DESC")}, dependent: :destroy
   
   mount_uploader :image, ImageUploader
+  # タグが管理できるようにする
+  acts_as_taggable
+
+
+
   # フォームでbase64_imageというフォーム部品を表示させるために必要
   def base64_image
     return @base64_image
@@ -25,6 +30,7 @@ class Product < ActiveRecord::Base
     @base64_image = file
   end
   
+  # 貸出可能 or 貸出中かを返す
   def status
     if self.lendable?
       "returned"
@@ -32,10 +38,13 @@ class Product < ActiveRecord::Base
       "unreturned"
     end
   end
-
+  
+  # この備品の累計貸出回数
   def count
     self.lendings.length
   end
+
+  # 借りれるかどうか
   def lendable?
     if latest_lending && latest_lending.status == "unreturned"
       # 借りれない

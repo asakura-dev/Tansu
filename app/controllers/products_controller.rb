@@ -5,7 +5,15 @@ class ProductsController < ApplicationController
   before_action :member
   before_action :owner_or_manager, :only => [:admin_index, :new, :create, :edit, :update, :delete_image, :destroy]
   def index
-    @products = Product.order("created_at DESC").paginate(page: params[:page], :per_page => 10)
+    tag = params["tag"]
+    if !tag
+      @heading = "新しい備品"
+      @products = Product.order("created_at DESC").paginate(page: params[:page], :per_page => 10)
+    else
+      @heading = "タグ \"#{tag}\" を持つ備品"
+      @products = Product.tagged_with(tag).paginate(page: params[:page], :per_page => 10)
+    end
+      
   end
   def admin_index
     @products = Product.order("created_at DESC").paginate(page: params[:page], :per_page => 10)
@@ -26,6 +34,8 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
+    gon.tags = @product.tag_list
+    gon.tags_path = request.path_info + '/tags'
   end
 
   def edit
