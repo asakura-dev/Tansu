@@ -1,0 +1,12 @@
+<div class="most_used_tags_wrapper">
+  <h1>人気のタグ</h1>
+  <div class="most_user_tags">
+    <div class="tags-wrapper l-grid-row">
+      <% @tags.each do |tag|  %>
+	<div class="tag">
+	  <%= link_to tag, products_path(tag: tag.name)%>
+	</div>
+      <% end %>
+    </div>
+  </div>
+</div>
