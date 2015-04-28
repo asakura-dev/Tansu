@@ -2,10 +2,18 @@
   <div class="footer"> 
     <div class="l-constrained">
       <ul class="footer-nav clearfix">
-	<li class="footer-nav-item l-align-left"><a href="/">ホーム</a></li>
-	<li class="footer-nav-item l-align-left"><a href="/">新しい備品</a></li>
-	<li class="footer-nav-item l-align-left"><a href="/">備品検索</a></li>
-	<li class="footer-nav-item l-align-left"><a href="/">新しいレビュー</a></li>
+	<li class="footer-nav-item l-align-left">
+	  <%= link_to "ホーム", root_path %>
+	</li>
+	<li class="footer-nav-item l-align-left">
+	  <%= link_to "新しい備品", products_path %>
+	</li>
+	<li class="footer-nav-item l-align-left">
+	  <a href="/">備品検索</a>
+	</li>
+	<li class="footer-nav-item l-align-left">
+	  <a href="/">新しいレビュー</a>
+	</li>
       </ul>
     </div>
   </div>
