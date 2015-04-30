@@ -88,3 +88,7 @@ gem 'gon', '~> 4.0'
 # 検索機能
 # Search solution
 gem "ransack"
+
+# mimetypeを検知する
+# detect the meme type of a file
+gem 'mimemagic'

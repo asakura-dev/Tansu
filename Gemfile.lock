@@ -79,6 +79,7 @@ GEM
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
     mime-types (2.4.3)
+    mimemagic (0.3.0)
     minitest (5.5.1)
     multi_json (1.11.0)
     multi_xml (0.5.5)
@@ -187,6 +188,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jpmobile (= 4.1.0)
   jquery-rails
+  mimemagic
   omniauth
   omniauth-github
   omniauth-twitter

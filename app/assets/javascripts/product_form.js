@@ -7,19 +7,23 @@ var cropper;
 	    this.short_name = (this.name).substring(0,20);
 	    this.description = description;
 	    this.image_url = image_url;
-	    console.log("created");
 	}
 	Product.prototype.select = function(){
 	    var p = this;
-	    self.product.name(p.name)
-	    self.product.description(p.description)
-	    cropper.load(p.image_url);
+	    self.product.name(p.name);
+	    self.product.description(p.description);
+	    self.product.image_url(p.image_url);
 	}
 	
 	// モードの種類
 	// manual,barcode,product_search
 	self.mode = ko.observable("manual");
 
+	self.load = function(){
+	    if(self.product.image_url()){
+		cropper.load('/third/image?url=' + encodeURIComponent(self.product.image_url()));
+	    }
+	}
 	// モードのタブが押された時呼び出される
 	self.selectMode = function(){
 	    // 押されたタブからモードを取得
@@ -49,7 +53,6 @@ var cropper;
 		    value: self.barcode_input()
 		},
 		success:function(data){
-		    console.log(data);
 		    self.loading(false);
 		    for(var i = 0 ,length = data.lenght-1; i < length; i++){
 			var p = data[i];
@@ -57,16 +60,12 @@ var cropper;
 			if(p.image){
 			    if(p.image.Large){
 				image = p.image.Large;
-				console.log("large");
 				console.log(image);n
 			    }else if(p.image.Medium){
 				image = p.image.Medium;
-				console.log("medium");
 				console.log(image);
 			    }else if(p.image.Small){
 				image = p.image.Small;
-				console.log("small");
-				console.log(image);
 			    }
 			}
 			self.search_results.push(new Product(p.name,p.description,image));

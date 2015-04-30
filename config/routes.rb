@@ -44,11 +44,12 @@ Rails.application.routes.draw do
   # 外部の商品検索APIを叩いてJSONを返すルート
   namespace :third do
     resource :product_search, :only => [:show]
+    match 'image' => 'product_image#show', :via => :get, as: 'load_image'
   end
 
   # コメント
   resources :comments, :only => [:index,:create, :update, :destroy]
-  
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

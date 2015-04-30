@@ -104,6 +104,7 @@
 	      </div>
 	      <div class="l-grid-10-12 l-align-left">
 		<%= f.hidden_field :base64_image %>
+		<button class="button button-success" type="button" data-bind="visible: mode() == 'barcode' || mode() == 'product_search',click: load()">画像を読み込む</button>
 		<div class="crop-container"><!-- - ここに編集画面が追加されます -->
 		</div>
 		<div class="l-grid-row clearfix">
