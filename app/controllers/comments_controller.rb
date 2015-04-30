@@ -3,6 +3,9 @@ class CommentsController < ApplicationController
   before_action :authenticate_user!
   before_action :member
   before_action :correct_user , :only => [:destroy]
+  def index
+    @comments = Comment.order("created_at DESC").paginate(page: params[:page], :per_page => 10)
+  end
   def create
     @comment = Comment.new(comment_params)
     if @comment.save

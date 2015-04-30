@@ -12,7 +12,7 @@ module Admin
         if @user = User.find(@params["user_id"])
           # 自分自身の権限は直接更新させない
           if @user != current_user
-            if ["member","manager"].include?(@params["authority"])
+            if ["member","manager","reject"].include?(@params["authority"])
               @user.authority = @params["authority"]
               @user.save
               render "update", :formats => [:json], :handlers => [:jbuilder]

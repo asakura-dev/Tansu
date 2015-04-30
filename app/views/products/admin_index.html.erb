@@ -2,7 +2,7 @@
   <h1>管理画面</h1>
   <%= render "admin/side" %>
   <div class="l-grid-9-12 l-align-left">
-    <h2>備品一覧</h2>
+    <h2>備品一覧 (全<%= @products.total_entries %>件)</h2>
     <table class="goods_table l-grid-row">
       <thead>
 	<tr>

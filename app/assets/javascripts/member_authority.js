@@ -19,7 +19,8 @@
 	    this.authorities = [
 		{name: "オーナー", value: "owner"},
 		{name: "マネージャー", value: "manager"},
-		{name: "一般ユーザー", value: "member"}
+		{name: "一般ユーザー", value: "member"},
+		{name: "メンバーから除外", value: "reject"}
 	    ];
 	    // セレクタで選択されている権限
 	    // ビューで選択が変更されると，この値が変わる
@@ -52,24 +53,30 @@
 	}
 	// 新しい権限の情報をサーバに送信して更新する
 	Member.prototype.update = function(authority){
-	    var self = this;
+	    var member = this;
 	    $.ajax({
 		type: "PATCH",
 		url: "/admin/member/authority",
 		data:{
 		    "user":{
-			"user_id": self.id,
+			"user_id": member.id,
 			"authority": authority
 		    }
 		},
 		success:function(data){
 		    var user = data.user;
-		    self.authority = user.authority;
-		    self.selectedValue(user.authority);
+		    if (user.authority == "reject"){
+			self.members.remove(function(item){
+			    return item.id == user.user_id;
+			});
+		    }else{
+			member.authority = user.authority;
+			member.selectedValue(user.authority);
+		    }
 		},
 		error:function(data){
 		    // 選択を元の権限に戻す
-		    self.selectedValue(self.authority);
+		    member.selectedValue(self.authority);
 		}
 	    });
 	};
