@@ -21,6 +21,9 @@ class Product < ActiveRecord::Base
   # タグが管理できるようにする
   acts_as_taggable
 
+  def self.ransackable_attributes auth_object = nil
+    %w(name description)
+  end
 
 
   # フォームでbase64_imageというフォーム部品を表示させるために必要

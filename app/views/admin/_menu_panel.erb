@@ -18,10 +18,10 @@
       </li>
     <% end %>
     <li>
-      <form class="input_box clearfix">
-	<input type="text" class="l-align-left">
-	<button class="l-align-right">検索</button>
-      </form>
+      <%= search_form_for product_query, class: "input_box clearfix" do |f| %>
+	<%= f.search_field :name_or_description_cont, class: "l-align-left"%>
+	<%= f.submit "検索", class: "l-align-right"%>
+      <% end %>
     </li>
   </ul>
 </div>

@@ -1,5 +1,8 @@
 # -*- coding: utf-8 -*-
 module ApplicationHelper
+  def product_query
+    Product.search(params[:q])
+  end
   def member
     authority = current_user.authority
     if ["owner","manager","member"].include?(authority)

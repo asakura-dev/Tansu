@@ -6,12 +6,17 @@ class ProductsController < ApplicationController
   before_action :owner_or_manager, :only => [:admin_index, :new, :create, :edit, :update, :delete_image, :destroy]
   def index
     tag = params["tag"]
-    if !tag
+    query = params["q"]
+    if !tag && !query
       @heading = "新しい備品"
       @products = Product.order("created_at DESC").paginate(page: params[:page], :per_page => 10)
-    else
+    elsif tag
       @heading = "タグ \"#{tag}\" を持つ備品"
       @products = Product.tagged_with(tag).paginate(page: params[:page], :per_page => 10)
+    else
+      @heading = "検索結果"
+      @q = Product.search(query)
+      @products = @q.result(distinct: true).paginate(page: params[:page], :per_page => 10)
     end
       
   end
