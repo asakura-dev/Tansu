@@ -1,5 +1,6 @@
 <%= content_for :javascript do %>
   <%= javascript_include_tag :product_tags %>
+  <%= javascript_include_tag :product_comments %>
 <% end %>
 <div class="l-constrained">
   <div class="l-grid-row clearfix">
@@ -47,6 +48,7 @@
 	<input type="text" data-bind="value: input, click: reset_message">
 	<button data-bind="click: addTag">追加</button>
 	<span class="error" data-bind="text:error_message"></span>
+	
       </div>
       <!-- ko foreach: tags -->
       <div class="tag">
@@ -58,35 +60,43 @@
   </div>
   
   <h2>コメント</h2>
-  <div class="product_comments block_content">
-    <% 5.times do %>
-      <div class="product_comment l-grid-12-12 clearfix l-align-center">
-	<div class="l-grid-1-12 l-align-left">
-          <div class="inner_offset">
-	    <img src="https://pbs.twimg.com/profile_images/541976875929571328/vnbAiTRn_400x400.png"><br>
-	    <a href="">@asakura_dev</a>
-	  </div>
-	</div>
-	<div class="l-grid-11-12 l-align-left">
-	  <div class="fbox font-large">気の利いたコメント気の利いたコメント気の利いたコメント気の利いたコメント気の利いたコメント</div>
+  <div class="product_comments block_content" data-bind="with: root_vm.product_comments_vm">
+    <div data-bind="foreach: {data: comments, afterAdd: showEffect, beforeRemove: hideEffect}">
+    <div class="product_comment l-grid-12-12 clearfix l-align-center">
+      <div class="l-grid-1-12 l-align-left">
+        <div class="inner_offset">
+	  <img data-bind="attr:{src: $parent.url(user.image)}">
 	</div>
       </div>
-    <% end %>
+      <div class="l-grid-11-12 l-align-left">
+	<div class="info l-grid-row clearfix">
+	  <div class="l-grid-10-12 l-align-left">
+	    <span data-bind="text:user.name"></span> - <span data-bind="text: created_at">2014/10/10</span>
+	  </div>
+	</div>
+	<div class="fbox font-large" data-bind="text: content"></div>
+	<div class="l-grid-1-12 l-align-right">
+	  <button class="button button-warning" data-bind="visible: user.id == $parent.user_id || $parent.authority == 'owner' || $parent.authority == 'manager', click: $parent.remove">削除</button>
+	</div>
+      </div>
+    </div>
+    </div>
     <h3 class="border_heading">コメントする</h3>
     <div class="product_comment clearfix">
       <form class="product_comment_form">
 	<div class="l-grid-1-12 l-align-left">
           <div class="inner_offset">
-	    <img src="https://pbs.twimg.com/profile_images/541976875929571328/vnbAiTRn_400x400.png"><br>
-	    <a href="">@asakura_dev</a>
+	    <%= image_tag current_user.image.url %>
 	  </div>
 	</div>
 	<div class="l-grid-11-12 l-align-left">
+	  <div class="info"><span>@<%= current_user.name%></span></div>
 	  <div class="fbox">
-	    <textarea>
-	    </textarea>
+	    <textarea data-bind="value: textarea, click: reset_message"></textarea>
 	  </div>
-	  <button class="button button-success l-align-right">送信</button>
+	  <button class="button button-success l-align-right" data-bind="click: create">送信</button>
+	  <div class="error l-align-right" data-bind="text: error_message"></div>
+	    <div class="success l-align-right" data-bind="text: success_message"></div>
 	</div>
       </form>
     </div>

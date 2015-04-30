@@ -33,5 +33,4 @@ class Lending < ActiveRecord::Base
       Lending.where(created_at: from...to).length
     end
   end
-  
 end

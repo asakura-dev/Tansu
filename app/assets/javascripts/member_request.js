@@ -74,7 +74,6 @@
 	};
 	// リクエストを表示するアニメーション
 	self.showRequest = function(elem) {
-	    console.log("show");
 	    if (elem.nodeType === 1) {
 		$(elem).hide().slideDown();
 	    }

@@ -15,7 +15,6 @@
 //= require js.cookie
 //= require image-cropper
 //= require knockout
-
 // Knockout.jsの拡張
 // イベントが先祖要素へ委譲(Progagation)されるのを防ぐ
 // Usage

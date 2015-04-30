@@ -33,9 +33,15 @@ class ProductsController < ApplicationController
   end
 
   def show
+    expires_now
     @product = Product.find(params[:id])
+    @comments = @product.comments
+    gon.jbuilder
+    gon.authority = current_user.authority
+    gon.user_id = current_user.id
     gon.tags = @product.tag_list
     gon.tags_path = request.path_info + '/tags'
+    gon.product_id = @product.id
   end
 
   def edit

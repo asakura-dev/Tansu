@@ -45,6 +45,9 @@ Rails.application.routes.draw do
   namespace :third do
     resource :product_search, :only => [:show]
   end
+
+  # コメント
+  resources :comments, :only => [:index,:create, :update, :destroy]
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -1,6 +1,13 @@
-$primary: #33cccc;
+$primary: #33cccc; 
 $primary-dark: #339999;
 $primary-light: #ace9ea;
+
+/*
+$primary: #76C7D7;
+$primary-dark:#67afbc;
+$primary-light: #83dfef;
+*/
+
 $warning: #ed5a5a;
 $warning-dark: #ea4848;
 .intro_top{
@@ -34,6 +41,13 @@ $warning-dark: #ea4848;
     width: 398px;
     margin: 10px 45px;
     border: 1px solid $primary;
+  }
+  iframe{
+    width:420px;
+    height:288px;
+    margin:10px 30px;
+    text-align:center;
+    border:1px solid $primary;
   }
   h2{
     font-size:30px;

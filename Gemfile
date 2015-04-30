@@ -38,37 +38,53 @@ gem 'bcrypt', '~> 3.1.7'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-# 追加でインストールするgem
+# このアプリケーションのために追加で利用するGem
+# additional gems for this application
 
-## 認証機能を提供するGem
+## 認証機能
+## Exellent authentication solution
 gem 'devise'
+
 ### 日本語に対応させる
+### for localize    
 gem 'devise-i18n'
 gem 'devise-i18n-views'
 
 ## 外部連携ログインのGem
+## Multi-Provider Authentication
 gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'omniauth-github'
 
 ## ページネーション機能を提供するGem
+## provide pagination solution
 gem 'will_paginate'
 
 ## modelにschemeをコメントとして埋め込む
-## bundle exec annotate
+## Add a comment of scheme to each models
+## usage: bundle exec annotate
 gem 'annotate'
 
 ## PCとモバイルでビューを切り替える
+## provide defferent view between PC and Mobile
 gem 'jpmobile', '4.1.0'
 
 ## 画像のアップロード
+## Image upload solution
 gem "carrierwave"
 
 ## HTTPクライアントライブラリ
+## Http client library
 gem 'faraday'
 
 ## タグ管理
+## tag solution
 gem 'acts-as-taggable-on', '~> 3.4'
 
 # サーバからJavaScriptに値を渡す
+# Enable to send data to JavaScript form Rails
 gem 'gon', '~> 4.0'
+
+# 検索機能
+# Search solution
+gem "ransack"

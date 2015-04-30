@@ -15,6 +15,7 @@ class Product < ActiveRecord::Base
   validates :name, length: {maximum: 96}, presence: true
   validates :description, length: {maximum: 2048}
   has_many :lendings, ->{order ("updated_at DESC")}, dependent: :destroy
+  has_many :comments, ->{order ("updated_at ASC")}, dependent: :destroy
   
   mount_uploader :image, ImageUploader
   # タグが管理できるようにする
