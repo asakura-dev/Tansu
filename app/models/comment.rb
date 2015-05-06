@@ -14,5 +14,4 @@ class Comment < ActiveRecord::Base
   validates :content, length: {maximum: 1024}, presence: true
   belongs_to :product
   belongs_to :user
-
 end
