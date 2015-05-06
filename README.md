@@ -20,7 +20,9 @@ config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.c
 メールアドレス部分を好みに変更(メールを送信するアドレスが良いです)
 この部分に指定されたメールアドレスが，登録メールのデフォルトの返信先になります．
 ```ruby
-#./config/environments/development.rb および ./config/environments/production.rb の末尾あたり
+#./config/environments/production.rb および ./config/environments/development.rb の末尾あたり
+  config.action_mailer.default_url_options = { :host =>
+    'localhost:3000' }
   config.action_mailer.smtp_settings = {
     :address => ENV["SMTP_ADDRESS"],
     :port => ENV["SMTP_PORT"],
@@ -30,6 +32,7 @@ config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.c
   }
 ```
 メールの送信に必要な情報を設定してください．
+localhost:3000の部分を"あなたのホスト名:ポート番号"に変更してください。
 
 ### Twiiterログイン
 ```ruby
@@ -46,8 +49,8 @@ config.omniauth :github , ENV["GITHUB_CONSUMER_KEY"], ENV["GITHUB_CONSUMER_SECRE
   :callback_url => "http://tansu.dev:3000/users/auth/github/callback"
 ```
 [Authorized applications](https://github.com/settings/applications)より，アプリを作成し，各キーを取得して設定してください．  
-アプリ作成の際のCallback URLは "http://あなたのホスト名/auth/github/callback"にしてください．  
-"http://tansu.dev:3000/auth/github/callback"を"http://あなたのホスト名/auth/github/callback"に書き換えてください．
+アプリ作成の際のCallback URLは "http://あなたのホスト名/auth/github/callback"にしてください。  
+また、"http://tansu.dev:3000/auth/github/callback" を "http://あなたのホスト名/auth/github/callback" に書き換えてください．
 
 ### Yahooショッピングの商品検索APIの設定
 ```ruby
