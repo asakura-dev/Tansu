@@ -15,13 +15,13 @@
       </ul>
     </div>
   </div>
-  <% if cookies[:view_selector] == "disabled" %>
+  <% if request.smart_phone?  %>
     <div class="view_toggle">
-      <span>スマートフォン版に切替</span>
+      <span>PC版に切替</span>
     </div>
     <script>
      $(".view_toggle > span").on("click",function(){
-	 Cookies.set('view_selector', "enabled");
+	 Cookies.set('view_selector', "disabled");
 	 location.reload();
      });
     </script>

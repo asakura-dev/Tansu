@@ -1,9 +1,7 @@
 <div class="l-constrained clearfix">
   <h1>管理画面</h1>
-  <div class="l-side-col l-grid-3-12 l-align-left">
-    <%= render "admin/side" %>
-  </div>
-  <div class="l-grid-9-12 l-align-left">
+  <%= render "admin/side" %>
+  <div class="l-grid-row">
     <h2>備品一覧 (全<%= @products.total_entries %>件)</h2>
     <table class="goods_table l-grid-row">
       <thead>

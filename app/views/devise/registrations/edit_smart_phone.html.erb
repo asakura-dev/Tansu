@@ -1,0 +1,61 @@
+<%= content_for :javascript do %>
+  <%= javascript_include_tag :user_form %>
+<% end %>
+<div class="l-constrained">
+  <h1 class="border_heading">
+    ユーザ編集
+  </h1>
+  <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put ,:class => "form"}) do |f| %>
+    <%= devise_error_messages! %>
+    <div class="l-grid-row clearfix">
+	<%= f.label :name %>
+	<%= f.text_field :name%>
+    </div>
+    <% if resource.provider.empty?  %>
+      <div class="l-grid-row clearfix">
+	  <%= f.label :email %>
+	  <%= f.email_field :email %>
+      </div>
+
+      <%- if devise_mapping.confirmable? && resource.pending_reconfirmation? -%>
+	<p>
+	  <%= t('.currently_waiting_confirmation_for_email', :email => resource.unconfirmed_email, :default => "Currently waiting confirmation for: %{email}") %>
+	</p>
+      <%- end -%>
+      <div class="l-grid-row clearfix">
+	  <%= f.label :password %> 
+	  <i>(<%= t('.leave_blank_if_you_don_t_want_to_change_it', :default => "leave blank if you don't want to change it") %>)</i>
+	  <%= f.password_field :password, :autocomplete => "off" %>
+      </div>
+      <div class="l-grid-row clearfix">
+	  <%= f.label :password_confirmation %>
+	  <%= f.password_field :password_confirmation %>
+	</div>
+      </div>
+
+      
+    <% end %>
+    <div class="l-grid-row clearfix">
+	<label>画像</label><br>
+	<span>スマートフォン版からは画像を変更できません。</span>
+    </div>
+    <% if resource.provider.empty?  %>
+      <div class="l-grid-row clearfix">
+	  <%= f.label :current_password %>
+	  <p class="annotation">(<%= t('.we_need_your_current_password_to_confirm_your_changes', :default => 'we need your current password to confirm your changes') %>)</p>
+	  <%= f.password_field :current_password %>
+      </div>
+    <% end %>
+    <div class="l-grid-row clearfix">
+      <div class="l-grid-1-4 l-align-right">
+	<%= f.submit "更新", class: "button button-success" %>
+      </div>
+    </div>
+  <% end %>
+
+  <h3>アカウントを削除</h3>
+
+  <%= link_to "アカウントを削除", registration_path(resource_name), :data => { :confirm => t('.are_you_sure', :default => "Are you sure?") }, :method => :delete %>
+
+  <%= link_to t('devise.shared.links.back', :default => "Back"), :back %>
+</div>

@@ -92,3 +92,4 @@ gem "ransack"
 # mimetypeを検知する
 # detect the meme type of a file
 gem 'mimemagic'
+

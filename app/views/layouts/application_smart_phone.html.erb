@@ -1,15 +1,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>GruppiGoods</title>
+  <title>Tansu</title>
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Cache-Control" content="no-store">
+  <meta http-equiv="Cache-Control" content="no-cache">
+  <meta http-equiv="Expires" content="-1">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= stylesheet_link_tag "smart_phone", :media => "all"%>
+  <%= include_gon %>
   <%= javascript_include_tag :application %>
+  <%= javascript_include_tag :dropdown %>
+  <%= yield :javascript %>
+  <%= javascript_include_tag :ko_bind %>
+
   <%= csrf_meta_tags %>
 </head>
 <body>
-<div class="l-wrapper">
-
-</div>
-sp
-
+  <div class="l-wrapper">
+    <%= render 'layouts/sp/header'%>
+    <div class="l-main clearfix">
+      <%= yield %>
+    </div>
+    <%= render 'layouts/sp/footer'%>
+  </div>
 </body>
 </html>

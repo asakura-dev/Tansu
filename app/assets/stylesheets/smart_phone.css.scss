@@ -1,0 +1,38 @@
+img{
+  max-width : 100% ;
+  height : auto ;
+}
+.l-wrapper{
+  min-width:100%;
+}
+.l-constrained{
+  width:95%;
+  margin:0 auto;
+}
+.intro_box{
+  text-align:center;
+  p{
+    font-size:14px;
+  }
+
+  h2{
+    font-size:25px;
+    line-height:30px;
+  }
+}
+.intro_box .intro1 {
+  text-align: center;
+  width: 80%;
+  height:auto;
+  margin:0 auto;
+  border: 1px solid #33cccc;
+}
+.intro_top{
+  p{
+    font-size:14px;
+  }
+  h1{
+    font-size:25px;
+    line-height:30px;
+  }
+}

@@ -1,11 +1,11 @@
 <div class="l-constrained">
   <% if user_signed_in? %>
     <% if current_user.member? %>
-      <%= render "home/pc/home"  %>
+      <%= render "home/sp/home"  %>
     <% else %>
       <%= render "home/pending"%>
     <% end %>
   <% else %>
-    <%= render "home/pc/introduction"%>
+    <%= render "home/sp/introduction"%>
   <% end %>
 </div>

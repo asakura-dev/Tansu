@@ -30,7 +30,7 @@ var cropper;
 	    var mode = $(event.target).attr("href").replace("#","");
 	    self.mode(mode);
 	    // クッキーに保存して，次回訪問時も前回選択したモードが選択されるようにする
-	    Cookies.set('mode',mode);
+	    Cookies.set('product_form_mode',mode);
 	    // モード変更時は，フォームの中身を一時消去する
 	};
 	// フォーム要素のオブジェクト
@@ -150,7 +150,7 @@ $(function(){
 
     
     // 前回選択したモードのタブが選択されるようにする．
-    if(Cookies.get('mode')){
-	root_vm["product_form_vm"].mode(Cookies.get('mode'));
+    if(Cookies.get('product_form_mode')){
+	root_vm["product_form_vm"].mode(Cookies.get('product_form_mode'));
     }
 });

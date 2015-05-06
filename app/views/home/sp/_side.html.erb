@@ -1,0 +1,11 @@
+<% if current_user.owner_or_manager? %>
+<div class="l-side-row">
+    <%= render 'admin/menu_panel' %>
+</div>
+<% end %>
+<div class="l-side-row">
+  <%= render 'home/user_lending_status'%>
+</div>
+<div class="l-side-row">
+  <%= render 'home/most_used_tags'%>
+</div>

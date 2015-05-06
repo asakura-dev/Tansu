@@ -1,0 +1,27 @@
+<div class="l-grid-row">
+  <h2 class="block_heading">新しい備品</h2>
+</div>
+<div class="l-grid-row clearfix">
+  <% @products.each do |product| %>
+  <div class="l-grid-2-12 l-align-left">
+    <div class="product_small">
+      <div class="info l-grid-row">
+	<span class="date">
+	  <%= l product.created_at, format: :short %>
+	</span>
+      </div>
+      <div>
+	<% unless product.lendable? %>
+	  <span class="hover_batch">貸出中</span>
+	<% end %>
+	<%= link_to image_tag(product.image.url), product_path(product)%>
+      </div>
+      <%= link_to truncate(product.name, :length => 30, :separator => "..."), product_path(product)%>
+    </div>
+  </div>
+  <% end %>
+</div>
+<div class="l-grid-row see_more">
+  <%= link_to "さらにみる",products_path%>
+
+</div>

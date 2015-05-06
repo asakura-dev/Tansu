@@ -3,10 +3,8 @@
 <% end %>
 <div class="l-constrained clearfix">
   <h1>管理画面</h1>
-  <div class="l-side-col l-grid-3-12 l-align-left">
-    <%= render "admin/side" %>
-  </div>
-  <div class="l-grid-9-12 l-align-left">
+  <%= render "admin/side" %>
+  <div class="l-grid-row">
     <h2>権限の管理</h2>
     <p class="annotation">
       オーナー(1人)：権限の管理、マネージャーができること<br>
@@ -40,15 +38,15 @@
     </script>
     <div class="block_content l-grid-row">
       <div class="user_box clearfix">
-	  <div class="l-grid-1-12 l-align-left">
+	  <div class="l-grid-3-12 l-align-left">
 	    <%= image_tag current_user.image.url %>
 	  </div>
-	  <div class="l-grid-8-12 l-align-left">
+	  <div class="l-grid-4-12 l-align-left">
 	    <p>
 	      <span><%= current_user.name %></span>
 	    </p>
 	  </div>
-	  <div class="l-grid-3-12 l-align-left">
+	  <div class="l-grid-5-12 l-align-left">
 	    <!-- options:セレクタが選べるオプションのオブジェクトの配列
 		 optionsText:実際に選択肢として表示される文字列
 		 optionsValue:選択された選択肢の内部的な値
@@ -63,15 +61,15 @@
       </div>
       <div data-bind="foreach: {data: members_vm.members}">
 	<div class="user_box clearfix">
-	  <div class="l-grid-1-12 l-align-left">
+	  <div class="l-grid-3-12 l-align-left">
 	    <img data-bind="attr: {src : image}">
 	  </div>
-	  <div class="l-grid-8-12 l-align-left">
+	  <div class="l-grid-4-12 l-align-left">
 	    <p>
 	      <span data-bind="text: name"></span>
 	    </p>
 	  </div>
-	  <div class="l-grid-3-12 l-align-left">
+	  <div class="l-grid-5-12 l-align-left">
 	    <!-- options:セレクタが選べるオプションのオブジェクトの配列
 		 optionsText:実際に選択肢として表示される文字列
 		 optionsValue:選択された選択肢の内部的な値

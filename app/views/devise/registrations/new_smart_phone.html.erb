@@ -1,0 +1,51 @@
+<div class="l-constrained">
+  <h1 class="border_heading">新規登録</h1>
+  <div class="l-grid-row signin_wrapper clearfix">
+    <h2>ソーシャル連携で登録</h2>
+    <div class="l-grid-row">
+      <div class="l-grid-11-12 l-align-center">
+	<div class="social_btns">
+	  <%= link_to "Twitterで登録", user_omniauth_authorize_path(:twitter), class: "link_btn link_btn_twitter link_btn_large" %>
+	  <%= link_to "Githubで登録", user_omniauth_authorize_path(:github), class: "link_btn link_btn_github link_btn_large" %>
+	  <div class="annotation">
+	  ※ユーザの許可無く投稿や編集をすることはありません．
+	  </div>
+	</div>
+      </div>
+    </div>
+    <h2>普通に登録</h2>
+    <div class="l-grid-row">
+      <div class="l-grid-row l-align-center">
+	<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class => "form"}) do |f| %>
+	  <%= devise_error_messages! %>
+	
+	  <div class="l-grid-row clearfix">
+	      <%= f.label :name %>
+	      <%= f.text_field :name %>
+	  </div>
+	  <div class="l-grid-row clearfix">
+	      <%= f.label :email %>
+	      <%= f.email_field :email %>
+	  </div>
+	  <div class="l-grid-row clearfix">
+	      <%= f.label :password %>
+	      <%= f.password_field :password %>
+	  </div>
+	  <div class="l-grid-row clearfix">
+	      <%= f.label :password_confirmation %>
+	      <%= f.password_field :password_confirmation %>
+	  </div>
+	  <div class="l-grid-row clearfix">
+	    <div class="l-grid-6-12 l-align-right">
+	    <%= f.submit t('.sign_up', :default => "新規登録"), class: "button button-success" %>
+	    </div>
+	  </div>
+	<% end %>
+	<br>
+	<%= render "devise/shared/links" %>
+      </div>
+    </div>
+  </div>
+</div>
+
+

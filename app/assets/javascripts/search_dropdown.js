@@ -1,5 +1,5 @@
 (function(){
-    function DropDownViewModel(){
+    function SearchDropDownViewModel(){
 	var self = this;
 	// ドロップダウンメニューがアクティブかどうか
 	// アクティブの時，ドロップダウンメニューが表示される
@@ -15,6 +15,5 @@
 	    }
 	});
     }
-    root_vm["dropdown_vm"] = new DropDownViewModel();
-    root_vm["dropdown_vm2"] = new DropDownViewModel();
+    root_vm["search_dropdown_vm"] = new SearchDropDownViewModel();
 })();

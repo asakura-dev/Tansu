@@ -3,10 +3,8 @@
 <% end %>
 <div class="l-constrained clearfix">
   <h1>管理画面</h1>
-  <div class="l-side-col l-grid-3-12 l-align-left">
-    <%= render "admin/side" %>
-  </div>
-  <div class="l-grid-9-12 l-align-left">
+  <%= render "admin/side" %>
+  <div class="l-grid-row">
     <h2>ユーザーの追加と承認</h2>
     <h3>参加を申請しているユーザ</h3>
     
@@ -21,7 +19,6 @@
 	  <span class="id"><%= user.id %></span>
 	  <span class="name"><%= user.name %></span>
 	  <span class="image"><%= user.image.url %></span>
-	  <span class="provider"><%= user.provider %></span>
 	</span>
       <% end %>
     </div>
@@ -63,18 +60,18 @@
     <p data-bind="if: member_request_vm.requests().length == 0">参加を申請しているユーザーがいません</p>
     <div data-bind="foreach: {data: member_request_vm.requests, beforeRemove: member_request_vm.hideRequest}">
       <div class="user_box block_content clearfix">
-	<div class="l-grid-1-12 l-align-left">
+	<div class="l-grid-3-12 l-align-left">
 	  <img class="large" data-bind="attr: {src : image}">
 	</div>
-	<div class="l-grid-7-12 l-align-left">
+	<div class="l-grid-4-12 l-align-left">
 	  <p>
 	    <span data-bind="text: name"></span><br>
 	  </p>
 	</div>
-	<div class="l-grid-4-12 l-align-left">
+	<div class="l-grid-5-12 l-align-left">
 	  <form>
-	    <button class="button button-warning offset" data-bind="click: reject">拒否</button>
-	    <button class="button button-success offset" data-bind="click: approve">承認</button>
+	    <button class="button-small button-warning offset" data-bind="click: reject">拒否</button>
+	    <button class="button-small button-success offset" data-bind="click: approve">承認</button>
 	  </form>
 	</div>
       </div>

@@ -1,0 +1,43 @@
+<div class="l-header" >
+  <div class="global-nav-sp">
+        <div class="alert-wrapper">
+      <% if notice %>
+	<div class="l-constrained">
+	  <div class="l-grid-row">
+	    <p class="alert alert-notice"><%= notice %></p>
+	  </div>
+	</div>
+      <% end %>
+      <% if alert %>
+	<div class="l-constrained">
+	  <div class="l-grid-row">
+	    <p class="alert alert-error"><%= alert%></p>
+	  </div>
+	</div>
+      <% end %>
+      <% if flash[:notice] %>
+	<% flash[:notice]=nil %>
+      <% end %>
+    </div>
+    <div data-bind="with: dropdown_vm">
+      <div class="dropdown-button-sp menu" data-bind="click: toggle, clickBubble: false">
+	<%= image_tag "menu_icon.png" %>
+      </div>
+      <div class="dropdown-panel-sp" data-bind="visible: actived" style="display:none;">
+	<ul>
+	  <% if user_signed_in? %>
+	    <li><%= link_to 'アカウント設定', edit_user_registration_path %></li>
+	    <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
+	  <% else %>
+	    <li><%= link_to 'ログイン', new_user_session_path %></li>
+	    <li><%= link_to '新規登録', new_user_registration_path %></li>
+	  <% end %>
+	</ul>
+      </div>
+    </div>
+    <div class="logo">
+      <%= link_to "Tansu", root_path%>
+    </div>
+  </div>
+  
+</div>

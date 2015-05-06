@@ -1,10 +1,17 @@
-<div class="l-constrained">
-  <h1 class="border_heading">新しいコメント</h1>
-  <% @comments.each_with_index do |comment, i| %>
-    <div class="l-grid-row">
+<div class="l-grid-row">
+  <h2 class="block_heading">新しいレビュー</h2>
+</div>
+<div class="l-grid-row clearfix">
+  <% @comments.each do |comment| %>
+    <div class="l-grid-4-12 l-align-left">
       <div class="block_content product_small clearfix">
+	<div class="info l-grid-row">
+	  <span class="date">
+	    <%= l comment.created_at, format: :short %>
+	  </span>
+	</div>
 	<div class="l-grid-row clearfix">
-	  <div class="l-grid-3-12 l-align-left">
+	  <div class="l-grid-1-2 l-align-left">
 	    <div class="inner_offset">
 	      <% unless comment.product.lendable? %>
 		<span class="hover_batch">貸出中</span>
@@ -12,29 +19,25 @@
 	      <%= link_to image_tag(comment.product.image.url), product_path(comment.product)%>
 	    </div>
 	  </div>
-	  <div class="l-grid-9-12 l-align-left">
+	  <div class="l-grid-1-2 l-align-left">
 	    <%= link_to truncate(comment.product.name, :length => 30, :separator => "..."), product_path(comment.product)%>
-	    <p>
-	      <%= truncate(comment.product.description, :length => 100, :separator => "...") %>
-	    </p>
 	  </div>
 	</div>
 	<div class="l-grid-row clearfix">
 	  <div class="product_comment clearfix">
-	    <div class="l-grid-2-12 l-align-left">
+	    <div class="l-grid-3-12 l-align-left">
 	      <div class="inner_offset">
 		<%= image_tag(comment.user.image.url)%>
+		
 	      </div>
 	    </div>
-	    <div class="l-grid-10-12 l-align-left">
+	    <div class="l-grid-9-12 l-align-left">
 	      <div class="l-grid-row">
-		<span>
-		  <%= comment.user.name%>
-		</span>
+		<span><%= comment.user.name%></span>
 	      </div>
-		<div class="fbox">
-		  <%= truncate(comment.content, :length => 30, :separator => '...')%>
-		</div>
+	      <div class="fbox">
+		<%= truncate(comment.content, :length => 30, :separator => '...')%>
+	      </div>
 	    </div>
 	  </div>
 	</div>
@@ -42,6 +45,6 @@
     </div>
   <% end %>
 </div>
-<div class="l-constrained pagination">
-      <%= will_paginate @comments, previous_label: "前", next_label: "次"%>
+<div class="l-grid-row see_more">
+  <%= link_to "さらにみる", comments_path%>
 </div>

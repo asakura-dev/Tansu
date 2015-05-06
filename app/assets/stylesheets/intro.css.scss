@@ -36,11 +36,16 @@ $warning-dark: #ea4848;
   }
 }
 .intro_box{
-  img{
+  text-align:center;
+  .intro1{
     text-align: center;
     width: 398px;
     margin: 10px 45px;
-    border: 1px solid $primary;
+  }
+  .intro2{
+    margin:0px 0 0 0;
+    width:250px;
+    height:auto;
   }
   iframe{
     width:420px;

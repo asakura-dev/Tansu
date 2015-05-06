@@ -3,7 +3,9 @@
 <% end %>
 <div class="l-constrained clearfix">
   <h1>管理画面</h1>
-  <%= render "admin/side" %>
+  <div class="l-grid-3-12 l-align-left l-side-col">
+    <%= render "admin/side" %>
+  </div>
   <div class="l-grid-9-12 l-align-left">
     <h2>備品の編集</h2>
     <%= form_for @product , :html => {:multipart => true, :class => "goods_form"} do |f| %>

@@ -22,16 +22,21 @@
     <div class="l-constrained">
       <%= link_to 'Tansu', root_path, class: "logo link l-align-left"%>
       <% if user_signed_in? %>
-	<div class="dropdown-user pull-right" data-bind="with: dropdown">
+	<div class="dropdown-user pull-right" data-bind="with: dropdown_vm">
 	  <%= image_tag current_user.image.url, :alt => "user icon", :data => { :bind => "click: toggle, clickBubble: false" }%>
           <div class="dropdown-panel" data-bind="visible: actived" style="display:none;">
             <ul>
-              <li><a href="#">プロフィール</a></li>
               <li><%= link_to 'アカウント設定', edit_user_registration_path %></li>
               <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
             </ul>
           </div>
         </div>
+	<div class="search pull-right">
+	  <%= search_form_for product_query, class: "" do |f| %>
+	    <%= f.search_field :name_or_description_cont, class: "l-align-left"%>
+	    <%= f.submit "検索", class: "l-align-right"%>
+	  <% end %>
+	</div>
       <% else %>
 	<%= link_to 'ログイン', new_user_session_path, class: "link l-align-right" %>
 	<%= link_to '新規登録', new_user_registration_path, class: "link l-align-right" %>

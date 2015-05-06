@@ -1,0 +1,58 @@
+<div class="l-constrained">
+  <h1 class="border_heading">
+   ソーシャルログイン
+  </h1>
+  <div class="l-grid-row">
+    <div class="l-grid-row l-align-center">
+      <div class="social_btns">
+	<%= link_to "Twitterでログイン", user_omniauth_authorize_path(:twitter), class: "link_btn link_btn_twitter link_btn_large" %>
+	<%= link_to "Githubでログイン", user_omniauth_authorize_path(:github), class: "link_btn link_btn_github link_btn_large" %>
+	<div class="annotation">
+	  ※ユーザの許可無く投稿や編集をすることはありません．
+	</div>
+      </div>
+    </div>
+  </div>
+  <h1 class="border_heading">
+    ログイン
+  </h1>
+  <div class="l-grid-row signin_wrapper clearfix">
+    <div class="l-grid-row">
+      <div class="l-grid-row l-align-center">
+	<%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => "form"}) do |f| %>
+	  <div class="l-grid-row clearfix">
+	    <%= f.label :email %>
+	    <%= f.email_field :email %>
+	  </div>
+	  <div class="l-grid-row clearfix">
+	    <%= f.label :password %>
+	    <%= f.password_field :password %>
+	  </div>
+
+	  <div class="l-grid-row clearfix">
+	  <% if devise_mapping.rememberable? -%>
+	    <div class="l-grid-1-12 l-align-left">
+	      <%= f.check_box :remember_me %> 
+	    </div>
+	    <div class="l-grid-8-12 l-align-left">
+	      <%= f.label :remember_me %>
+	    </div>
+	    
+	  <% end -%>
+	  </div>
+	  <div class="l-grid-row clearfix">
+	    <div class="l-grid-4-12 l-align-right">
+	      <%= f.submit "ログイン", class: "button button-success" %>
+	    </div>
+	  </div>
+	<% end %>
+      </div>
+    </div>
+    
+    <div class="l-grid-row">
+      <%= render "devise/shared/links" %>
+    </div>
+  </div>
+</div>
+
+

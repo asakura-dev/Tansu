@@ -3,7 +3,9 @@
 <% end %>
 <div class="l-constrained clearfix">
   <h1>管理画面</h1>
-  <%= render "admin/side" %>
+  <div class="l-side-col l-grid-3-12 l-align-left">
+    <%= render "admin/side" %>
+  </div>
   <div class="l-grid-9-12 l-align-left">
     <h2>備品の追加</h2>
     <div class="tabs" data-bind="with: product_form_vm">

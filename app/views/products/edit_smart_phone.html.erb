@@ -1,0 +1,42 @@
+<%= content_for :javascript do %>
+  <%= javascript_include_tag :product_edit_form %>
+<% end %>
+<div class="l-constrained clearfix">
+  <h1>管理画面</h1>
+  <%= render "admin/side" %>
+  <div class="l-grid-row">
+    <h2>備品の編集</h2>
+    <%= form_for @product , :html => {:multipart => true, :class => "goods_form"} do |f| %>
+      <% if @product.errors.any? %>
+	<div class="l-grid-row">
+	  <ul>
+	    <% @product.errors.full_messages.each do |msg| %>
+	      <li><%= msg %></li>
+	    <% end %>
+	  </ul>
+	</div>
+      <% end %>
+      <div class="l-grid-row clearfix">
+	  <%= f.label :name, "品名(必須)" %>
+	  <div class="annotation">※96文字以内</div>
+	  <%= f.text_field :name, :class => "input"%>
+      </div>
+      <div class="l-grid-row clearfix">
+	  <%= f.label :description, "説明(必須)"%>
+	  <div class="annotation">
+	    ※2048文字以内</div>
+	  <%= f.text_area :description, :class => "textarea"%>
+      </div>
+      <div class="l-grid-row clearfix">
+	<div class="l-grid-row l-align-left">
+	  <label>画像</label><br>
+	  <span>スマートフォン版からは画像を変更できません。</span>
+	</div>
+      </div>
+      <div class="l-grid-row clearfix">
+	
+	<%= f.submit "更新", class: "button button-success l-align-right" %>
+      </div>
+    <% end %>
+  </div>
+</div>
