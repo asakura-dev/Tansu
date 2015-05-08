@@ -17,4 +17,6 @@ Rails.application.config.assets.precompile += %w( user_rental_status.js )
 Rails.application.config.assets.precompile += %w( product_tags.js )
 Rails.application.config.assets.precompile += %w( product_comments.js )
 Rails.application.config.assets.precompile += %w( smart_phone.css )
+Rails.application.config.assets.precompile += %w( smart_phone.js )
+Rails.application.config.assets.precompile += %w( fastclick.js )
 
