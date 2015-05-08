@@ -32,6 +32,8 @@ ActiveRecord::Schema.define(version: 20150428085347) do
     t.datetime "updated_at"
   end
 
+  add_index "lendings", ["product_id", "user_id"], name: "index_lendings_on_product_id_and_user_id"
+
   create_table "products", force: true do |t|
     t.string   "name",        default: "", null: false
     t.text     "description"
