@@ -40,7 +40,7 @@
 		  </div>
 		  <div class="l-grid-10-12 l-align-left">
 		    <div class="input_box">
-		      <input id="barcode" name="barcode" type="text" class="l-align-left" data-bind="value: barcode_input">
+		      <input id="barcode" name="barcode" type="text" class="l-align-left" data-bind="textInput: barcode_input, event: {keypress: search}">
 		      <button type="button" class="l-align-right" data-bind="click: barcode_search">検索</button>
 		    </div>
 		  </div>
@@ -53,7 +53,7 @@
 	      </div>
 	      <div class="l-grid-10-12 l-align-left">
 		<div class="input_box">
-		  <input id="product_input" name="product_input" type="text" class="l-align-left" data-bind="value: product_input">
+		  <input id="product_input" name="product_input" type="text" class="l-align-left" data-bind="textInput: product_input, event: {keypress: search}">
 		  <button type="button" class="l-align-right" data-bind="click: product_search">検索</button>
 		</div>
 	      </div>
@@ -80,7 +80,7 @@
 		</div>
 	      </div>
 	    </div>
-	    
+
 	    <div class="l-grid-row clearfix">
 	      <div class="l-grid-2-12 l-align-left">
 		<%= f.label :name, "品名(必須)" %>
