@@ -14,7 +14,7 @@ var cropper;
 	    self.product.description(p.description);
 	    self.product.image_url(p.image_url);
 	}
-	
+
 	// モードの種類
 	// manual,barcode,product_search
 	self.mode = ko.observable("manual");
@@ -75,7 +75,7 @@ var cropper;
 		    self.loading(false);
 		}
 	    });
-	};	
+	};
 	self.product_input = ko.observable("");
 	self.product_search = function(){
 	    // ajax search
@@ -117,19 +117,36 @@ var cropper;
 		}
 	    });
 	};
-	
+	// Enterで検索
+	self.search = function(d,e){
+		// enterキーを拾う
+		if (e.keyCode === 13) {
+			switch (self.mode()) {
+			case 'product_search':
+				self.product_search();
+				break;
+			case 'barcode':
+				self.barcode_search();
+				break;
+			}
+			return false;
+		}
+		return true;
+	};
+
+
 	// 検索して取得した商品の情報をを格納する配列
 	self.search_results = ko.observableArray();
 	self.setForm = function(product_object){
 	    self.product.title(product_object.title);
 	    self.product.description(product_object.description);
 	}
-    }    
+    }
     root_vm["product_form_vm"] = new ProductFormViewModel();
 })();
 
 $(function(){
-    
+
     cropper = $.imageCropper.new(".crop-container",{
 	canvas: {
 	    width: "300px",
@@ -148,7 +165,7 @@ $(function(){
 	output: "#product_base64_image"
     });
 
-    
+
     // 前回選択したモードのタブが選択されるようにする．
     if(Cookies.get('product_form_mode')){
 	root_vm["product_form_vm"].mode(Cookies.get('product_form_mode'));
