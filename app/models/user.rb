@@ -38,7 +38,7 @@ class User < ActiveRecord::Base
   validates :authority, presence: true, :inclusion => ['owner', 'manager', 'member', 'pending', 'reject']
   has_many :lendings # ユーザを削除しても、貸出情報はなくならない(貸出件数に影響するため)
   has_many :commets
-  
+
   before_save :when_confirmed
 
   def unreturned_lendings
@@ -91,7 +91,7 @@ class User < ActiveRecord::Base
 
   def set_autority
     # 一番最初に有効化された時，オーナー権限を付与
-    if User.where("confirmed_at not ?", nil).length == 0
+    unless User.find_by(authority: "owner")
       self.authority = "owner"
     end
   end
@@ -116,7 +116,7 @@ class User < ActiveRecord::Base
       false
     end
   end
-  private 
+  private
   def when_confirmed
     # アカウントが有効化された時
     if self.confirmed_at_changed?
@@ -124,5 +124,5 @@ class User < ActiveRecord::Base
     end
     true
   end
-  
+
 end
