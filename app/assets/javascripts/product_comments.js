@@ -5,11 +5,7 @@
 	self.user_id = gon.user_id;
 	self.comments = ko.observableArray(gon.comments);
 	self.url = function(image){
-	    if(image == "user_default.png"){
-		return "/assets/user_default.png";
-	    }else{
 		return image;
-	    }
 	};
 	//self.comments = ["",""];
 	self.textarea = ko.observable("");
@@ -49,7 +45,7 @@
 	    });
 	};
 	// リクエストを隠すアニメーション
-	self.hideEffect = function(elem){ 
+	self.hideEffect = function(elem){
 	    if (elem.nodeType === 1) {
 		$(elem).animate({opacity: 0}, 500).slideUp(function() {
 		    $(elem).remove();

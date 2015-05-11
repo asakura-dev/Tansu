@@ -8,14 +8,7 @@
 	    this.id = id;
 	    this.name = name;
 	    this.authority = authority;
-
-	    // アイコン画像が設定されてない時は，user_default.pngが渡されるが，
-	    // user_default.pngはassetsフォルダの中に入っているので変換する必要がある
-	    if(image == "user_default.png"){
-		this.image = "/assets/user_default.png";
-	    }else{
 		this.image = image;
-	    }
 	    this.authorities = [
 		{name: "オーナー", value: "owner"},
 		{name: "マネージャー", value: "manager"},
@@ -86,7 +79,7 @@
 	self.pushMember = function(id,name,authority,image){
 	    self.members.push(new Member(id,name,authority,image));
 	};
-	
+
 	self.members = ko.observableArray();
     }
     root_vm["members_vm"] = new MembersViewModel();

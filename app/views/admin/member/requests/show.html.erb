@@ -9,9 +9,9 @@
   <div class="l-grid-9-12 l-align-left">
     <h2>ユーザーの追加と承認</h2>
     <h3>参加を申請しているユーザ</h3>
-    
+
     <div class="raw_requests"style="display:none">
-      <!-- 
+      <!--
 	      一度，参加申請をしているリストのDOMを生成し，
 	      jQueryでroot_vm.member_request.requestsに追加，
 	      リストのDOMを削除．
@@ -20,13 +20,13 @@
 	<span class="raw_request">
 	  <span class="id"><%= user.id %></span>
 	  <span class="name"><%= user.name %></span>
-	  <span class="image"><%= user.image.url %></span>
+	  <span class="image"><%= asset_path user.image.url %></span>
 	  <span class="provider"><%= user.provider %></span>
 	</span>
       <% end %>
     </div>
     <div class="raw_rejected_requests"style="display:none">
-      <!-- 
+      <!--
 	      一度，参加申請をしているリストのDOMを生成し，
 	      jQueryでroot_vm.member_request.requestsに追加，
 	      リストのDOMを削除．
@@ -35,7 +35,7 @@
 	<span class="raw_rejected_request">
 	  <span class="id"><%= user.id %></span>
 	  <span class="name"><%= user.name %></span>
-	  <span class="image"><%= user.image.url %></span>
+	  <span class="image"><%= asset_path user.image.url %></span>
 	</span>
       <% end %>
     </div>
@@ -49,7 +49,7 @@
 	 );
      });
      $(".raw_requests").remove();
-     
+
      $(".raw_rejected_request").each(function(){
 	 root_vm["member_request_vm"].pushRequest(
 	     "rejected_requests",

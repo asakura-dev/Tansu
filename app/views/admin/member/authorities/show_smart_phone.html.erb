@@ -19,7 +19,7 @@
 	  <span class="id"><%= member.id %></span>
 	  <span class="name"><%= member.name %></span>
 	  <span class="authority"><%= member.authority %></span>
-	  <span class="image"><%= member.image.url %></span>
+	  <span class="image"><%= asset_path member.image.url %></span>
 	</div>
       <% end %>
     </div>
@@ -52,7 +52,7 @@
 		 optionsValue:選択された選択肢の内部的な値
 		 value: 現在選択されている値(双方向にデータバインディングされる)
 	    -->
-	    
+
 	    <select class="offset" disabled>
 	      <option>オーナー</option>
 	    </select>
@@ -75,7 +75,7 @@
 		 optionsValue:選択された選択肢の内部的な値
 		 value: 現在選択されている値(双方向にデータバインディングされる)
 	    -->
-	    
+
 	    <select class="offset" data-bind="options: authorities,
 					      optionsText:'name',
 					      optionsValue: 'value',
