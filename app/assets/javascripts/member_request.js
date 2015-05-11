@@ -7,14 +7,7 @@
 	function MemberRequest(id,name,image){
 	    this.id = id;
 	    this.name = name;
-	    console.log(image);
-	    // アイコン画像が設定されてない時は，user_default.pngが渡されるが，
-	    // これはassetsフォルダの中に入っているので変換する必要がある
-	    if(image == "user_default.png"){
-		this.image = "/assets/user_default.png";
-	    }else{
 		this.image = image;
-	    }
 	}
 	// リクエストの情報をサーバに送信して更新する
 	MemberRequest.prototype.update = function(authority){
@@ -65,7 +58,7 @@
 	};
 
 	// リクエストを隠すアニメーション
-	self.hideRequest = function(elem){ 
+	self.hideRequest = function(elem){
 	    if (elem.nodeType === 1) {
 		$(elem).animate({opacity: 0}, 500).slideUp(function() {
 		    $(elem).remove();
@@ -77,7 +70,7 @@
 	    if (elem.nodeType === 1) {
 		$(elem).hide().slideDown();
 	    }
-	};	
+	};
 	// 参加申請のリクエストのリスト
 	self.requests = ko.observableArray();
 	// 拒否済みのリクエストのリスト

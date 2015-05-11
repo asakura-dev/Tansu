@@ -5,6 +5,6 @@ json.comments @comments do |comment|
  json.user do
    json.id comment.user.id
    json.name comment.user.name
-   json.image comment.user.image
+   json.image asset_path comment.user.image
  end
 end
