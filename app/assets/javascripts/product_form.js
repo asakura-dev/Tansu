@@ -54,13 +54,13 @@ var cropper;
 		},
 		success:function(data){
 		    self.loading(false);
-		    for(var i = 0 ,length = data.lenght-1; i < length; i++){
+		    for(var i = 0 ,length = data.length-1; i < length; i++){
 			var p = data[i];
 			var image = "";
 			if(p.image){
 			    if(p.image.Large){
 				image = p.image.Large;
-				console.log(image);n
+				console.log(image);
 			    }else if(p.image.Medium){
 				image = p.image.Medium;
 				console.log(image);
@@ -98,7 +98,7 @@ var cropper;
 			    if(p.image.Large){
 				image = p.image.Large;
 				console.log("large");
-				console.log(image);n
+				console.log(image);
 			    }else if(p.image.Medium){
 				image = p.image.Medium;
 				console.log("medium");
