@@ -36,3 +36,4 @@ doc/
 
 # user upload file
 /public/uploads
+/public/assets
