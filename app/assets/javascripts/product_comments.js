@@ -5,7 +5,10 @@
 	self.user_id = gon.user_id;
 	self.comments = ko.observableArray(gon.comments);
 	self.url = function(image){
-		return image;
+	    if(image == "/user_default.png"){
+		image = "/assets/user_default.png"
+	    }
+	    return image;
 	};
 	//self.comments = ["",""];
 	self.textarea = ko.observable("");
