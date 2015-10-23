@@ -1,0 +1,17 @@
+<div class="l-constrained clearfix">
+  <h1>管理画面</h1>
+  <div class="l-side-col l-grid-3-12 l-align-left">
+    <%= render "admin/side"%>
+  </div>
+  <div class="l-grid-9-12 l-align-left">
+    <h2>備品データのインポート/エクスポート</h2>
+    <p>CSV形式で備品データのインポート/エクスポートができます。<br>※画像のデータは含みません。</p>
+    <h3>インポート</h3>
+    <%= form_tag import_products_path, multipart: true do %>
+      <%= file_field_tag :file %>
+      <%= submit_tag "インポート" %>
+    <% end %>
+    <h3>エクスポート</h3>
+    
+  </div>
+</div>

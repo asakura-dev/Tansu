@@ -10,6 +10,9 @@
       <%= link_to "備品追加",new_product_path %>
     </li>
     <li>
+      <%= link_to "備品バックアップ", import_export_products_path%>
+    </li>
+    <li>
       <%= link_to "ユーザの追加と承認", admin_member_request_path %>
     </li>
     <% if current_user.owner? %>

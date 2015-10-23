@@ -26,12 +26,19 @@ Rails.application.routes.draw do
 
   # 備品の周り
   resources :products, :only => [:index,:create, :show,:update, :destroy] do
+    collection do
+      post :import
+    end
     resource :tags, :only => [:show,:create, :destroy]
   end
   
   # 備品の追加・編集は/admin/products以下のルートにする
   scope :admin do
-    resources :products, :only => [:new,:edit]
+    resources :products, :only => [:new,:edit] do
+      collection do
+        get :import_export
+      end
+    end
     # 管理者用のテーブル形式の備品一覧ページ
     match 'products' => 'products#admin_index', :via => :get, as: 'admin_products'
     # Ajax経由で画像を削除するためのルート
