@@ -10,7 +10,7 @@
 #  created_at  :datetime
 #  updated_at  :datetime
 #
-
+require 'csv'
 class Product < ActiveRecord::Base
   validates :name, length: {maximum: 96}, presence: true
   validates :description, length: {maximum: 2048}
@@ -25,7 +25,21 @@ class Product < ActiveRecord::Base
     %w(name description)
   end
 
-
+  def self.import(file)
+    CSV.foreach(file.path, headers:true) do |row|
+      attrs = row.to_hash.slice("name","description")
+      product = Product.new(attrs)
+      product.save!
+    end
+  end
+  def self.to_csv
+    CSV.generate do |csv|
+      csv << column_names
+      all.each do |model|
+        csv << model.attributes.values_at(*column_names)
+      end
+    end
+  end
   # フォームでbase64_imageというフォーム部品を表示させるために必要
   def base64_image
     return @base64_image

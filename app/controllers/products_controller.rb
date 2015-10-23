@@ -3,7 +3,7 @@ class ProductsController < ApplicationController
   include CarrierwaveBase64Uploader
   before_action :authenticate_user!
   before_action :member
-  before_action :owner_or_manager, :only => [:admin_index, :new, :create, :edit, :update, :delete_image, :destroy]
+  before_action :owner_or_manager, :only => [:admin_index, :new, :create, :edit, :update, :delete_image, :destroy, :import]
   def index
     tag = params["tag"]
     query = params["q"]
@@ -18,7 +18,10 @@ class ProductsController < ApplicationController
       @q = Product.search(query)
       @products = @q.result(distinct: true).paginate(page: params[:page], :per_page => 10)
     end
-      
+    respond_to do |format|
+      format.html
+      format.csv { send_data Product.to_csv }
+    end
   end
   def admin_index
     @products = Product.order("created_at DESC").paginate(page: params[:page], :per_page => 10)
@@ -75,6 +78,11 @@ class ProductsController < ApplicationController
     product = Product.find(params[:id])
     product.destroy
     redirect_to admin_products_path, notice: "備品を削除しました"
+  end
+
+  def import
+    Product.import(params[:file])
+    redirect_to admin_products_path, notice: "備品をインポートしました"
   end
   private
   def product_params
