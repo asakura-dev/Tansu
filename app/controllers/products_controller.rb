@@ -3,7 +3,7 @@ class ProductsController < ApplicationController
   include CarrierwaveBase64Uploader
   before_action :authenticate_user!
   before_action :member
-  before_action :owner_or_manager, :only => [:admin_index, :new, :create, :edit, :update, :delete_image, :destroy, :import]
+  before_action :owner_or_manager, :only => [:admin_index, :new, :create, :edit, :update, :delete_image, :destroy, :import, :admin_lendings]
   def index
     tag = params["tag"]
     query = params["q"]
@@ -25,6 +25,10 @@ class ProductsController < ApplicationController
   end
   def admin_index
     @products = Product.order("created_at DESC").paginate(page: params[:page], :per_page => 10)
+  end
+
+  def admin_lendings
+    @products = Product.order("created_at DESC").paginate(page: params[:page], :per_page => 10).unreturned
   end
 
   def new

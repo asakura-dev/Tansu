@@ -1,0 +1,42 @@
+<div class="l-constrained clearfix">
+  <h1>管理画面</h1>
+  <div class="l-side-col l-grid-3-12 l-align-left">
+    <%= render "admin/side" %>
+  </div>
+  <div class="l-grid-9-12 l-align-left">
+    <h2>貸出中の備品一覧 (全<%= @products.total_entries %>件)</h2>
+    <table class="goods_table l-grid-row">
+      <thead>
+	<tr>
+	  <th class="col_goods">品名</th>
+	  <th class="col_userid">貸出者ID</th>
+	  <th class="col_datesimple">貸出日</th>
+	  <th class="col_datesimple">返却期限</th>
+	  <th class="col_times">累計貸出回数</th>
+	  <th class="col_status">延滞状況</th>
+	  <th ckass="col_edit">編集</th>
+	</tr>
+      <tbody>
+	<% @products.each do |product|  %>
+	  <tr>
+	    <td class="col_goods">
+	      <%= link_to product.name, product_path(product) %>
+	    </td>
+	    <td class="col_userid"><%= product.lending_user.name%></td>
+	    <td class="col_datesimple"><%= l product.lending_date, format: :short%></td>
+	    <td class="col_datesimple"><%= l product.deadline, format: :short%></td>
+	    <td class="col_times"><%= product.count %></td>
+	    <td class="col_status"><%= "延滞" if product.overdue?%></td>
+	    <td class="col_edit">
+	      <%= link_to "編集", edit_product_path(product), class: "link_btn link_btn_success" %>
+	    </td>
+	  </tr>
+	<% end %>
+      </tbody>
+    </table>
+    <div class="l-constrained pagination">
+      <%= will_paginate @products, previous_label: "前", next_label: "次"%>
+    </div>
+    
+  </div>
+</div>

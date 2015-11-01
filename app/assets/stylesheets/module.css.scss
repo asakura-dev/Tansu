@@ -686,7 +686,7 @@ $warning-dark: #ea4848;
   }
 }
 .col_goods{
-  
+  width:200px;
 }
 .col_category{
   width:100px;
@@ -700,14 +700,20 @@ $warning-dark: #ea4848;
 .col_date{
   width:150px;
 }
+.col_datesimple{
+  width:80px;
+}
 .col_times{
-  width:100px;
+  width:110px;
 }
 .col_status{
   width:100px;
 }
 .col_edit{
   width:50px;
+}
+.col_user{
+  width:150px;
 }
 
 .invitation_form{
@@ -1073,6 +1079,10 @@ $warning-dark: #ea4848;
 }
 .crop-container{
   margin:5px 0;
+}
+
+.overdue{
+  color: red;
 }
 
 .view_toggle{

@@ -3,7 +3,6 @@ class LendingController < ApplicationController
   before_action :authenticate_user!
   before_action :member
   before_action :correct_user , only: :update
-  
   def create
     @product = Product.find(params[:product_id])
     faild_message = '貸出処理に失敗しました。再度手続きをお願いします。'
