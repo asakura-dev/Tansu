@@ -40,7 +40,7 @@ localhost:3000の部分を"あなたのホスト名:ポート番号"に変更し
 config.omniauth :twitter, ENV["TWITTER_CONSUMER_KEY"], ENV["TWITTER_CONSUMER_SECRET"]
 ```
 [Twitter Application Management](https://apps.twitter.com/)よりアプリを作成し，各キーを取得して設定してください．  
-アプリ作成の際のCallback URLは "http://あなたのホスト名/auth/twitter/callback"にしてください．
+アプリ作成の際のCallback URLは "http://あなたのホスト名/users/auth/twitter/callback"にしてください．
 
 ### Githubログイン
 ```ruby
@@ -49,8 +49,8 @@ config.omniauth :github , ENV["GITHUB_CONSUMER_KEY"], ENV["GITHUB_CONSUMER_SECRE
   :callback_url => "http://tansu.dev:3000/users/auth/github/callback"
 ```
 [Authorized applications](https://github.com/settings/applications)より，アプリを作成し，各キーを取得して設定してください．  
-アプリ作成の際のCallback URLは "http://あなたのホスト名/auth/github/callback"にしてください。  
-また、"http://tansu.dev:3000/auth/github/callback" を "http://あなたのホスト名/auth/github/callback" に書き換えてください．
+アプリ作成の際のCallback URLは "http://あなたのホスト名/users/auth/github/callback"にしてください。  
+また、"http://tansu.dev:3000/users/auth/github/callback" を "http://あなたのホスト名/users/auth/github/callback" に書き換えてください．
 
 ### Yahooショッピングの商品検索APIの設定
 ```ruby
