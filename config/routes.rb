@@ -41,6 +41,8 @@ Rails.application.routes.draw do
     end
     # 管理者用のテーブル形式の備品一覧ページ
     match 'products' => 'products#admin_index', :via => :get, as: 'admin_products'
+        # 管理者用のテーブル形式の貸出中備品一覧ページ
+    match 'lendings' => 'products#admin_lendings', :via => :get, as: 'admin_lendings'
     # Ajax経由で画像を削除するためのルート
     delete 'products/:id/image', to:'products#delete_image'
   end
@@ -54,6 +56,8 @@ Rails.application.routes.draw do
     match 'image' => 'product_image#show', :via => :get, as: 'load_image'
   end
 
+  #貸出一覧
+  resources :lendings
   # コメント
   resources :comments, :only => [:index,:create, :update, :destroy]
 

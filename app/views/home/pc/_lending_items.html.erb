@@ -1,0 +1,20 @@
+<div class="l-grid-row">
+  <h2 class="block_heading">貸出中の備品</h2>
+</div>
+<div class="l-grid-row clearfix">
+  <% @lendings.each do |lending| %>
+    <div class="l-grid-2-12 l-align-left">
+      <div class="product_small"> 
+        <div>
+  	      <span class="hover_batch">貸出中</span>
+  	    <%= link_to image_tag(lending.image.url), product_path(lending)%>
+    </div>
+    <%= render "home/pc/lending_data", product: lending%>
+    </div>
+  </div>
+  <% end %>
+</div>
+<div class="l-grid-row see_more">
+  <%= link_to "さらにみる",lendings_path%>
+
+</div>

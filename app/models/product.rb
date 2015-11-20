@@ -16,7 +16,8 @@ class Product < ActiveRecord::Base
   validates :description, length: {maximum: 2048}
   has_many :lendings, ->{order ("updated_at DESC")}, dependent: :destroy
   has_many :comments, ->{order ("updated_at ASC")}, dependent: :destroy
-  
+  #スコープの追加
+  scope :unreturned, -> { joins(:lendings).merge(Lending.unreturned) }
   mount_uploader :image, ImageUploader
   # タグが管理できるようにする
   acts_as_taggable
@@ -71,6 +72,23 @@ class Product < ActiveRecord::Base
       # 借りれる
       true
     end
+  end
+
+  def lending_user
+    latest_lending.user
+  end
+
+  def overdue?
+    latest_lending.overdue?
+  end
+
+  def lending_date
+    latest_lending.created_at.to_date
+  end
+
+
+  def deadline
+    latest_lending.deadline
   end
 
   def latest_lending

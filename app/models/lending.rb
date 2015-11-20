@@ -14,10 +14,10 @@
 
 class Lending < ActiveRecord::Base
   validates :status, presence: true, :inclusion => ['unreturned','returned']
-
   belongs_to :product
   belongs_to :user
-  
+  scope :unreturned, -> { where status: "unreturned" }
+
   def self.count(option)
     if option == "all"
       Lending.all().length
@@ -32,5 +32,9 @@ class Lending < ActiveRecord::Base
       to = from.next_month
       Lending.where(created_at: from...to).length
     end
+  end
+  
+  def overdue?
+    deadline < Date.today
   end
 end

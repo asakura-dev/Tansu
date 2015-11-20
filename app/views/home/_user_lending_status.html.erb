@@ -10,7 +10,10 @@
 	<% current_user.unreturned_lendings.each do |lending|%>
 	<li class="clearfix">
           <div class="l-grid-10-12 l-align-left">
-	    <p class="deadline">返却期限：<%= l lending.deadline, format: :short%></p>
+	    <p class="deadline">返却期限：
+        <span class="<%= 'overdue' if lending.overdue? %>">
+          <%= l lending.deadline, format: :short%></p>
+        </span>
 	      <%= link_to truncate(lending.product.name, :length => 30, :separator => "..."), product_path(lending.product), class: "title"%>
 	  </div>
 	  <div class="l-grid-2-12 l-align-right">

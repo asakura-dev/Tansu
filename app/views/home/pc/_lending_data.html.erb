@@ -1,0 +1,21 @@
+<% unless product.lendable? %>
+	<div class="info l-grid-row">
+	  <span class="date">
+	    <div class="clearfix">
+	      <div class="l-grid-4-12 l-align-left">
+	        <div class="inner_offset">
+	          <%=image_tag product.lending_user.image.url%>
+	        </div>
+	      </div>
+	      <div class="l-grid-8-12 l-align-left">
+	        <div class="l-grid-row">
+	            <span><%= product.lending_user.name%></span>
+	        </div>
+	          <span class="<%= 'overdue' if product.overdue? %>`">
+	          <%= l product.deadline, format: :short%>まで
+	          </span>
+	      </div>
+	    </div>
+	  </span>
+	</div>
+<% end %>

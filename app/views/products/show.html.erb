@@ -21,12 +21,15 @@
       <div class="l-grid-2-12 l-align-left">
 	<div class="inner_offset">
 	  <%= image_tag @product.image.url %>
+	  <%= render "home/pc/lending_data", product: @product%>
 	</div>
       </div>
       <div class="l-grid-8-12 l-align-left">
 	<div class="inner_offset">
 	  <h1><%= @product.name %></h1>
+
 	  <p><%= @product.description %></p>
+
 	</div>
       </div>
       <div class="l-grid-2-12 l-align-left">
