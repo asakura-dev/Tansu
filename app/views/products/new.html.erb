@@ -79,8 +79,12 @@
 		  </div>
 		</div>
 	      </div>
+	      <!-- - Begin Yahoo! JAPAN Web Services Attribution Snippet -->
+	      <a href="http://developer.yahoo.co.jp/about">
+		<img src="http://i.yimg.jp/images/yjdn/yjdn_attbtn1_125_17.gif" title="Webサービス by Yahoo! JAPAN" alt="Web Services by Yahoo! JAPAN" width="125" height="17" border="0" style="margin:0 0px 15px 0px">
+	      </a>
+	      <!-- - End Yahoo! JAPAN Web Services Attribution Snippet -->
 	    </div>
-
 	    <div class="l-grid-row clearfix">
 	      <div class="l-grid-2-12 l-align-left">
 		<%= f.label :name, "品名(必須)" %>
@@ -129,6 +133,7 @@
 		</div>
 	      </div>
 	    </div>
+	    <%= f.hidden_field :url, :data => {:bind => "value: product.url"}%>
 	    <div class="l-grid-row clearfix">
 	      <%= f.submit "作成", class: "button button-success l-align-right" %>
 	    </div>

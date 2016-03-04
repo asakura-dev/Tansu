@@ -95,6 +95,6 @@ class ProductsController < ApplicationController
     unless base64_image.nil? || base64_image.empty?
       params[:product][:image] = base64_conversion(base64_image)
     end
-    params.require(:product).permit(:name, :description, :image)
+    params.require(:product).permit(:name, :description, :image,:url)
   end
 end

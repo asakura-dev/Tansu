@@ -2,17 +2,19 @@ var cropper;
 (function(){
     function ProductFormViewModel(){
 	var self = this;
-	function Product(name,description,image_url){
+	function Product(name,description,image_url,url){
 	    this.name = name;
 	    this.short_name = (this.name).substring(0,20);
 	    this.description = description;
 	    this.image_url = image_url;
+	    this.url = url;
 	}
 	Product.prototype.select = function(){
 	    var p = this;
 	    self.product.name(p.name);
 	    self.product.description(p.description);
 	    self.product.image_url(p.image_url);
+	    self.product.url(p.url);
 	}
 
 	// モードの種類
@@ -37,7 +39,8 @@ var cropper;
 	self.product = {
 	    name: ko.observable(""),
 	    description: ko.observable(""),
-	    image_url: ko.observable("")
+	    image_url: ko.observable(""),
+	    url: ko.observable("")
 	};
 	self.loading = ko.observable(false);
 	self.barcode_input = ko.observable("");
@@ -60,10 +63,8 @@ var cropper;
 			if(p.image){
 			    if(p.image.Large){
 				image = p.image.Large;
-				console.log(image);
 			    }else if(p.image.Medium){
 				image = p.image.Medium;
-				console.log(image);
 			    }else if(p.image.Small){
 				image = p.image.Small;
 			    }
@@ -90,26 +91,19 @@ var cropper;
 		},
 		success:function(data){
 		    self.loading(false);
-
 		    for(var i = 0 ,length = data.length-1; i < length; i++){
 			var p = data[i];
 			var image = "";
 			if(p.image){
 			    if(p.image.Large){
 				image = p.image.Large;
-				console.log("large");
-				console.log(image);
 			    }else if(p.image.Medium){
 				image = p.image.Medium;
-				console.log("medium");
-				console.log(image);
 			    }else if(p.image.Small){
 				image = p.image.Small;
-				console.log("small");
-				console.log(image);
 			    }
 			}
-			self.search_results.push(new Product(p.name,p.description,image));
+			self.search_results.push(new Product(p.name,p.description,image,p.url));
 		    }
 		},
 		error:function(data){
@@ -135,7 +129,7 @@ var cropper;
 	};
 
 
-	// 検索して取得した商品の情報をを格納する配列
+	// 検索して取得した商品の情報を格納する配列
 	self.search_results = ko.observableArray();
 	self.setForm = function(product_object){
 	    self.product.title(product_object.title);

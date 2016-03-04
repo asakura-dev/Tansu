@@ -39,6 +39,9 @@
 	<div class="inner_offset">
 	  <h1><%= @product.name %></h1>
 	  <p><%= @product.description %></p>
+	  <% if @product.url != "" %>
+	    <%= link_to "商品リンク", @product.url%>
+	  <% end %>
 	</div>
       </div>
     </div>
