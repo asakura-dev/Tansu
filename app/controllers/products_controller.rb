@@ -37,6 +37,11 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
+    # tag_listにはコンマ区切りでタグを渡す
+    # *演算子で配列の値をコンマ区切りにしてる
+    if params["tags"]
+      @product.tag_list.add(*params["tags"].values)
+    end
     if @product.save
       redirect_to new_product_path, notice: "備品を追加しました"
     else
