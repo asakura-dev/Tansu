@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150428085347) do
+ActiveRecord::Schema.define(version: 20160304061335) do
 
   create_table "comments", force: true do |t|
     t.integer  "product_id"
@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 20150428085347) do
     t.string   "image"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "url",         default: ""
   end
 
   add_index "products", ["created_at"], name: "index_products_on_created_at"
