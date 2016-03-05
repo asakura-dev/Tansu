@@ -33,6 +33,7 @@ doc/
 #*#
 *#
 .#*
+config/application.yml
 
 # user upload file
 /public/uploads

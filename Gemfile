@@ -94,3 +94,6 @@ gem "ransack"
 # mimetypeを検知する
 # detect the meme type of a file
 gem 'mimemagic'
+
+# 環境変数管理
+gem 'figaro'
