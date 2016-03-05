@@ -24,7 +24,7 @@ MAILER_URL_HOST: "yourhostname:portnumber"
 ```
 メールの送信に必要な情報を設定してください．
 
-### Twiiterログイン
+### Twitterログイン
 ```yml
 TWITTER_CONSUMER_KEY: ""
 TWITTER_CONSUMER_SECRET: ""
