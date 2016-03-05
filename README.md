@@ -34,7 +34,7 @@ config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.c
 メールの送信に必要な情報を設定してください．
 localhost:3000の部分を"あなたのホスト名:ポート番号"に変更してください。
 
-### Twiiterログイン
+### Twitterログイン
 ```ruby
 #./config/initializers/devise.rb 230行目あたり  
 config.omniauth :twitter, ENV["TWITTER_CONSUMER_KEY"], ENV["TWITTER_CONSUMER_SECRET"]
