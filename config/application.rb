@@ -22,5 +22,6 @@ module Tansu
     config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     config.i18n.default_locale = :ja
     config.yahoo_application_id = ENV["YAHOO_APPLICATION_ID"]
+    config.active_job.queue_adapter = :delayed_job
   end
 end

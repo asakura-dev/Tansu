@@ -585,7 +585,7 @@ $warning-dark: #ea4848;
   box-sizing: border-box;
   height: 20px;
   line-height:20px;
-  display: inline-block;
+  display: inline-blok;
 }
 .button-success{
   border:1px solid $primary-dark;
@@ -595,6 +595,13 @@ $warning-dark: #ea4848;
   &:hover{
     background:$primary-light;
   }
+}
+.button-disabled{
+  border:1px solid $primary-dark;
+  border-radius:4px;
+  background:#ddd;
+  color:$primary-dark;
+  opacity:0.5;
 }
 .button-warning{
   border:1px solid $warning;
@@ -1092,4 +1099,21 @@ $warning-dark: #ea4848;
   span{
     color:#fff;
   }
+}
+
+.notify_form {
+  margin: 20px 10px;
+  .l-grid-row{
+    margin-top:10px;
+  }
+  input[type="text"]{
+    width:100%;
+  }
+}
+.hilight{
+  margin:10px;
+  padding:5px;
+  border-radius:2px;
+  background:#f7f7f7;
+  
 }

@@ -46,7 +46,19 @@ GITHUB_CALLBACK: "http://yourhostname:portnumber/users/auth/github/callback"
 YAHOO_APPLICATION_ID: ""
 ```
 [Yahoo!デベロッパーネットワーク](http://developer.yahoo.co.jp/)より，アプリを作成し，アプリケーションIDを取得して設定してください．
-
+## サーバの起動
+データベースの作成
+```
+bundle exec rake db:migrate
+```
+アプリケーションサーバの起動
+```
+bundle exec rails s
+```
+ジョブサーバの起動
+```
+bin/delayed_job start
+```
 ## はじめてのログイン
 新規登録よりアカウントを作成し、ログインしてください。  
 最初に有効化されたアカウントがサービス開始時の"オーナー"になります。  

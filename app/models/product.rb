@@ -21,6 +21,7 @@ class Product < ActiveRecord::Base
   mount_uploader :image, ImageUploader
   # タグが管理できるようにする
   acts_as_taggable
+  after_create :slack_notify_new_product
 
   def self.ransackable_attributes auth_object = nil
     %w(name description)
@@ -97,5 +98,8 @@ class Product < ActiveRecord::Base
     else
       nil
     end
+  end
+  def slack_notify_new_product
+    SlackNotificationJob.perform_later("new_product", self.id)
   end
 end

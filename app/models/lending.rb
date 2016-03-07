@@ -17,7 +17,8 @@ class Lending < ActiveRecord::Base
   belongs_to :product
   belongs_to :user
   scope :unreturned, -> { where status: "unreturned" }
-
+  after_create :slack_notify_lent
+  after_update :slack_notify_returned
   def self.count(option)
     if option == "all"
       Lending.all().length
@@ -36,5 +37,11 @@ class Lending < ActiveRecord::Base
   
   def overdue?
     deadline < Date.today
+  end
+  def slack_notify_lent
+    SlackNotificationJob.perform_later("lent_product", self.id)
+  end
+  def slack_notify_returned
+    SlackNotificationJob.perform_later("returned_product", self.id)
   end
 end
