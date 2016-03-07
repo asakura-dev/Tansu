@@ -1093,3 +1093,13 @@ $warning-dark: #ea4848;
     color:#fff;
   }
 }
+
+.notify_form {
+  margin: 20px 10px;
+  .l-grid-row{
+    margin-top:10px;
+  }
+  input[type="text"]{
+    width:100%;
+  }
+}

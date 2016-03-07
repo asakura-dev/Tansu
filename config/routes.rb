@@ -22,6 +22,9 @@ Rails.application.routes.draw do
       # ユーザの参加承認を管理
       resource :request, :only => [:show, :update]
     end
+    namespace :settings do
+      resource :slack, :only => [:show, :update]
+    end
   end
 
   # 備品の周り

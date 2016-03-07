@@ -1,0 +1,51 @@
+<div class="l-constrained clearfix">
+  <h1>管理画面</h1>
+  <div class="l-side-col l-grid-3-12 l-align-left">
+    <%= render "admin/side" %>
+  </div>
+  <div class="l-grid-9-12 l-align-left">
+    <h2>Slack通知</h2>
+    <h3>手順</h3>
+    <p>
+1. <a href="https://slack.com/apps">Slack Apps</a> より「Incoming WebHooks」を検索・追加<br>
+2. 通知先チャンネルを設定(例：#tansu)<br>
+3. Webhook URLをコピーして下のフォームに入力</p>
+    <h3>設定</h3>
+    <%= form_tag "/admin/settings/slack" , :class => "notify_form", :method => "PATCH" do%>
+      <div class="l-grid-row clearfix">
+	<div class="l-grid-2-12 l-align-left">
+	  Slack通知
+	</div>
+	<div class="l-grid-10-12 l-align-left">
+	  <%= check_box 'slack', 'enable', {checked: @setting.notify_enable}%>
+	  <%= label_tag 'slack[enable]', 'Slack通知を有効にする'%>
+	</div>
+      </div>
+      <div class="l-grid-row clearfix">
+	<div class="l-grid-2-12 l-align-left">
+	  <%= label_tag 'slack[webhook_url]', 'Webhook URL'%>
+	</div>
+	<div class="l-grid-10-12 l-align-left">
+	  <%= text_field_tag 'slack[webhook_url]', @setting.notify_webhook_url %>
+	</div>
+      </div>
+      <div class="l-grid-row clearfix">
+	<div class="l-grid-2-12 l-align-left">
+	  通知項目
+	</div>
+	<div class="l-grid-10-12 l-align-left">
+	  <%= check_box 'slack', 'new_product', {checked: @setting.notify_new_product} %>
+	  <%= label_tag 'slack[new_product]', '新しい備品が登録されたら通知'%><br>
+	  <%= check_box 'slack', 'lent_product', {checked: @setting.notify_lent_product} %>
+	  <%= label_tag 'slack[lent_product]', '備品が貸し出されたら通知'%><br>
+	  <%= check_box 'slack', 'returned_product', {checked: @setting.notify_returned_product} %>
+	  <%= label_tag 'slack[returned_product]', '備品が返却されたら通知'%><br>
+	  
+	</div>
+      </div>
+      <div class="l-grid-row clearfix">
+	<%= submit_tag("更新",class: "button button-success l-align-right") %>
+      </div>
+    <% end %>
+  </div>
+</div>
