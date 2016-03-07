@@ -10,7 +10,7 @@ class SlackNotificationJob < ActiveJob::Base
     end
     case notify_type
       when "new_product" then
-      slack_notify_new_product(id]) if setting.notify_new_product == true
+      slack_notify_new_product(id) if setting.notify_new_product == true
 
       when "lent_product" then
       slack_notify_lent_product(id) if setting.notify_lent_product == true
