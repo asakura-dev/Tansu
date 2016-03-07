@@ -97,5 +97,8 @@ gem 'mimemagic'
 
 # 環境変数管理
 gem 'figaro'
-
+# Slack通知
 gem 'slack-notifier'
+# 非同期処理
+gem 'delayed_job_active_record'
+gem "daemons"

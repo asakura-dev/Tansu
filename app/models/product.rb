@@ -100,22 +100,6 @@ class Product < ActiveRecord::Base
     end
   end
   def slack_notify_new_product
-    setting = SlackSetting.instance
-    # slack通知が有効でない時，備品の追加を通知しない設定の時は通知しない
-    if setting.notify_enable != true || setting.notify_new_product != true
-      return
-    end
-    notifier = Slack::Notifier.new(setting.notify_webhook_url)
-    if self.name.length > 40
-      name = self.name[0,40] + "…"
-    else
-      name = self.name
-    end
-    message = "【新しい備品】「#{name}」 "
-    option = {
-      color: "good",
-      text: message
-    }
-    notifier.ping "", attachments: [option]
+    SlackNotificationJob.perform_later("new_product", self.id)
   end
 end
