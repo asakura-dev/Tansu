@@ -1,6 +1,9 @@
+# -*- coding: utf-8 -*-
 class SlackSetting < ActiveRecord::Base
   store :data, accessors: %i(notify_enable notify_new_product notify_lent_product notify_returned_product notify_webhook_url)
   def self.instance
+    # 同一インスタンスを常に返す
+    # インスタンスが生成された事がないときのみ生成
     instance = SlackSetting.find_by_id(1) || SlackSetting.create_instance
   end
   def self.create_instance

@@ -171,6 +171,7 @@ GEM
       sass (~> 3.2.2)
       sprockets (~> 2.8, < 3.0)
       sprockets-rails (~> 2.0)
+    slack-notifier (1.5.1)
     spring (1.6.4)
     sprockets (2.12.4)
       hike (~> 1.2)
@@ -222,6 +223,7 @@ DEPENDENCIES
   rails (~> 4.2.0)
   ransack
   sass-rails (~> 4.0.3)
+  slack-notifier
   spring
   sqlite3
   therubyracer

@@ -1,33 +1,46 @@
 <div class="admin_panel">
   <ul>
     <li class="heading">
-      <a href="/">管理</a>
+      <a href="/">備品</a>
     </li>
     <li>
-      <%= link_to "備品一覧", admin_products_path%>
+      <%= link_to "一覧", admin_products_path%>
     </li>
     <li>
       <%= link_to "貸出中の備品一覧", admin_lendings_path %>
     </li>
     <li>
-      <%= link_to "備品追加",new_product_path %>
+      <%= link_to "追加",new_product_path %>
     </li>
     <li>
-      <%= link_to "備品バックアップ", import_export_products_path%>
+      <%= link_to "バックアップ", import_export_products_path%>
     </li>
     <li>
-      <%= link_to "ユーザの追加と承認", admin_member_request_path %>
+      <%= search_form_for product_query, class: "input_box clearfix" do |f| %>
+	<%= f.search_field :name_or_description_cont, class: "l-align-left"%>
+	<%= f.submit "検索", class: "l-align-right"%>
+      <% end %>
+    </li>
+  </ul>
+  <ul>
+    <li class="heading">
+      <a href="/">ユーザ</a>
+    </li>
+    <li>
+      <%= link_to "追加と承認", admin_member_request_path %>
     </li>
     <% if current_user.owner? %>
       <li>
 	<%= link_to "権限の管理", admin_member_authority_path %>
       </li>
     <% end %>
+  </ul>
+  <ul>
+    <li class="heading">
+      <a href="/">設定</a>
+    </li>
     <li>
-      <%= search_form_for product_query, class: "input_box clearfix" do |f| %>
-	<%= f.search_field :name_or_description_cont, class: "l-align-left"%>
-	<%= f.submit "検索", class: "l-align-right"%>
-      <% end %>
+      <%= link_to "Slack通知", admin_settings_slack_path %>
     </li>
   </ul>
 </div>

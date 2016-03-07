@@ -97,3 +97,5 @@ gem 'mimemagic'
 
 # 環境変数管理
 gem 'figaro'
+
+gem 'slack-notifier'
