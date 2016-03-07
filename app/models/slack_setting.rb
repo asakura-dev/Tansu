@@ -13,6 +13,6 @@ class SlackSetting < ActiveRecord::Base
     instance.notify_lent_product = false
     instance.notify_returned_product = false
     instance.save
-    redirect_to root_path
+    instance
   end
 end
