@@ -12,7 +12,7 @@
 #  updated_at :datetime
 #
 
-class Lending < ActiveRecord::Base
+class Lending < ApplicationRecord
   validates :status, presence: true, :inclusion => ['unreturned','returned']
   belongs_to :product
   belongs_to :user

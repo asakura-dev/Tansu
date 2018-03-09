@@ -11,7 +11,7 @@
 #  updated_at  :datetime
 #
 require 'csv'
-class Product < ActiveRecord::Base
+class Product < ApplicationRecord
   validates :name, length: {maximum: 96}, presence: true
   validates :description, length: {maximum: 2048}
   has_many :lendings, ->{order ("updated_at DESC")}, dependent: :destroy
