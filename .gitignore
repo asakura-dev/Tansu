@@ -38,3 +38,6 @@ config/application.yml
 # user upload file
 /public/uploads
 /public/assets
+
+## RubyMine's ide file
+.idea/

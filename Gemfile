@@ -2,17 +2,17 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 4.2.0'
+gem 'rails', '~> 5.0.6'
 # Use sqlite3 as the database for Active Record
-group :development do  
-  gem 'sqlite3'
+group :development do
+  gem 'sqlite3', '~> 1.3.13'
 end
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.3'
+gem 'sass-rails', '~> 5.0.6'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
-gem 'coffee-rails', '~> 4.0.0'
+gem 'coffee-rails', '~> 4.2.2'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 gem 'therubyracer',  platforms: :ruby
 
@@ -48,7 +48,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'devise'
 
 ### 日本語に対応させる
-### for localize    
+### for localize
 gem 'devise-i18n'
 gem 'devise-i18n-views'
 
@@ -81,11 +81,11 @@ gem 'faraday'
 
 ## タグ管理
 ## tag solution
-gem 'acts-as-taggable-on', '~> 3.4'
+gem 'acts-as-taggable-on', '~> 5.0'
 
 # サーバからJavaScriptに値を渡す
 # Enable to send data to JavaScript form Rails
-gem 'gon', '~> 4.0'
+gem 'gon', '~> 6.2.0'
 
 # 検索機能
 # Search solution
