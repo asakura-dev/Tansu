@@ -11,8 +11,8 @@ class ApplicationController < ActionController::Base
 
   protected
   def configure_permitted_parameters
-    devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:name, :email, :password, :password_confirmation, :remember_me) }
-    devise_parameter_sanitizer.for(:account_update) do |u|
+    devise_parameter_sanitizer.permit(:sign_up) { |u| u.permit(:name, :email, :password, :password_confirmation, :remember_me) }
+    devise_parameter_sanitizer.permit(:account_update) do |u|
       unless u[:base64_image].nil? || u[:base64_image].empty?
         # CarrierwaveBase64Uploaderモジュール参照
         u[:image] = base64_conversion(u[:base64_image]) 
