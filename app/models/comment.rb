@@ -10,7 +10,7 @@
 #  updated_at :datetime
 #
 
-class Comment < ActiveRecord::Base
+class Comment < ApplicationRecord
   validates :content, length: {maximum: 1024}, presence: true
   belongs_to :product
   belongs_to :user

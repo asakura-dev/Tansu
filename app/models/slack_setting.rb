@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-class SlackSetting < ActiveRecord::Base
+class SlackSetting < ApplicationRecord
   store :data, accessors: %i(notify_enable notify_new_product notify_lent_product notify_returned_product notify_webhook_url)
   def self.instance
     # 同一インスタンスを常に返す

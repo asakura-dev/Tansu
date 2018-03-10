@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -19,9 +18,8 @@ ActiveRecord::Schema.define(version: 20160307094036) do
     t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["product_id", "user_id"], name: "index_comments_on_product_id_and_user_id"
   end
-
-  add_index "comments", ["product_id", "user_id"], name: "index_comments_on_product_id_and_user_id"
 
   create_table "delayed_jobs", force: :cascade do |t|
     t.integer  "priority",   default: 0, null: false
@@ -35,9 +33,8 @@ ActiveRecord::Schema.define(version: 20160307094036) do
     t.string   "queue"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["priority", "run_at"], name: "delayed_jobs_priority"
   end
-
-  add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority"
 
   create_table "lendings", force: :cascade do |t|
     t.integer  "product_id"
@@ -46,9 +43,8 @@ ActiveRecord::Schema.define(version: 20160307094036) do
     t.string   "status"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["product_id", "user_id"], name: "index_lendings_on_product_id_and_user_id"
   end
-
-  add_index "lendings", ["product_id", "user_id"], name: "index_lendings_on_product_id_and_user_id"
 
   create_table "products", force: :cascade do |t|
     t.string   "name",        default: "", null: false
@@ -57,9 +53,8 @@ ActiveRecord::Schema.define(version: 20160307094036) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "url",         default: ""
+    t.index ["created_at"], name: "index_products_on_created_at"
   end
-
-  add_index "products", ["created_at"], name: "index_products_on_created_at"
 
   create_table "slack_settings", force: :cascade do |t|
     t.text     "data"
@@ -69,23 +64,21 @@ ActiveRecord::Schema.define(version: 20160307094036) do
 
   create_table "taggings", force: :cascade do |t|
     t.integer  "tag_id"
-    t.integer  "taggable_id"
     t.string   "taggable_type"
-    t.integer  "tagger_id"
+    t.integer  "taggable_id"
     t.string   "tagger_type"
+    t.integer  "tagger_id"
     t.string   "context",       limit: 128
     t.datetime "created_at"
+    t.index ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true
+    t.index ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context"
   end
-
-  add_index "taggings", ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true
-  add_index "taggings", ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context"
 
   create_table "tags", force: :cascade do |t|
     t.string  "name"
     t.integer "taggings_count", default: 0
+    t.index ["name"], name: "index_tags_on_name", unique: true
   end
-
-  add_index "tags", ["name"], name: "index_tags_on_name", unique: true
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",        null: false
@@ -109,11 +102,10 @@ ActiveRecord::Schema.define(version: 20160307094036) do
     t.string   "name"
     t.string   "authority",              default: "pending", null: false
     t.string   "image"
+    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
   end
-
-  add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-  add_index "users", ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
 
 end

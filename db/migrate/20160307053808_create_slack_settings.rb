@@ -1,4 +1,4 @@
-class CreateSlackSettings < ActiveRecord::Migration
+class CreateSlackSettings < ActiveRecord::Migration[4.2]
   def change
     create_table :slack_settings do |t|
       t.text :data

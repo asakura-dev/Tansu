@@ -1,4 +1,4 @@
-class CreateLendings < ActiveRecord::Migration
+class CreateLendings < ActiveRecord::Migration[4.2]
   def change
     create_table :lendings do |t|
       t.integer :product_id
