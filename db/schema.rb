@@ -13,95 +13,95 @@
 ActiveRecord::Schema.define(version: 20160307094036) do
 
   create_table "comments", force: :cascade do |t|
-    t.integer  "product_id"
-    t.integer  "user_id"
-    t.text     "content"
+    t.integer "product_id"
+    t.integer "user_id"
+    t.text "content"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.index ["product_id", "user_id"], name: "index_comments_on_product_id_and_user_id"
   end
 
   create_table "delayed_jobs", force: :cascade do |t|
-    t.integer  "priority",   default: 0, null: false
-    t.integer  "attempts",   default: 0, null: false
-    t.text     "handler",                null: false
-    t.text     "last_error"
+    t.integer "priority", default: 0, null: false
+    t.integer "attempts", default: 0, null: false
+    t.text "handler", null: false
+    t.text "last_error"
     t.datetime "run_at"
     t.datetime "locked_at"
     t.datetime "failed_at"
-    t.string   "locked_by"
-    t.string   "queue"
+    t.string "locked_by"
+    t.string "queue"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.index ["priority", "run_at"], name: "delayed_jobs_priority"
   end
 
   create_table "lendings", force: :cascade do |t|
-    t.integer  "product_id"
-    t.integer  "user_id"
-    t.date     "deadline"
-    t.string   "status"
+    t.integer "product_id"
+    t.integer "user_id"
+    t.date "deadline"
+    t.string "status"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.index ["product_id", "user_id"], name: "index_lendings_on_product_id_and_user_id"
   end
 
   create_table "products", force: :cascade do |t|
-    t.string   "name",        default: "", null: false
-    t.text     "description"
-    t.string   "image"
+    t.string "name", default: "", null: false
+    t.text "description"
+    t.string "image"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "url",         default: ""
+    t.string "url", default: ""
     t.index ["created_at"], name: "index_products_on_created_at"
   end
 
   create_table "slack_settings", force: :cascade do |t|
-    t.text     "data"
+    t.text "data"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "taggings", force: :cascade do |t|
-    t.integer  "tag_id"
-    t.string   "taggable_type"
-    t.integer  "taggable_id"
-    t.string   "tagger_type"
-    t.integer  "tagger_id"
-    t.string   "context",       limit: 128
+    t.integer "tag_id"
+    t.string "taggable_type"
+    t.integer "taggable_id"
+    t.string "tagger_type"
+    t.integer "tagger_id"
+    t.string "context", limit: 128
     t.datetime "created_at"
     t.index ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true
     t.index ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context"
   end
 
   create_table "tags", force: :cascade do |t|
-    t.string  "name"
+    t.string "name"
     t.integer "taggings_count", default: 0
     t.index ["name"], name: "index_tags_on_name", unique: true
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                  default: "",        null: false
-    t.string   "encrypted_password",     default: "",        null: false
-    t.string   "reset_password_token"
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,         null: false
+    t.integer "sign_in_count", default: 0, null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
-    t.string   "confirmation_token"
+    t.string "current_sign_in_ip"
+    t.string "last_sign_in_ip"
+    t.string "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
-    t.string   "unconfirmed_email"
+    t.string "unconfirmed_email"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "provider",               default: "",        null: false
-    t.string   "uid",                    default: "",        null: false
-    t.string   "name"
-    t.string   "authority",              default: "pending", null: false
-    t.string   "image"
+    t.string "provider", default: "", null: false
+    t.string "uid", default: "", null: false
+    t.string "name"
+    t.string "authority", default: "pending", null: false
+    t.string "image"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

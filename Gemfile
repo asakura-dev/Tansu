@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.0.6'
+gem 'rails', '~> 5.1.0'
 # Use sqlite3 as the database for Active Record
 group :development do
   gem 'sqlite3'
@@ -69,7 +69,7 @@ gem 'annotate'
 
 ## PCとモバイルでビューを切り替える
 ## provide defferent view between PC and Mobile
-gem 'jpmobile', '~> 5.0.0'
+gem 'jpmobile', '~> 5.1.0'
 
 ## 画像のアップロード
 ## Image upload solution
