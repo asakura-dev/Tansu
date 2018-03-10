@@ -69,7 +69,7 @@ gem 'annotate'
 
 ## PCとモバイルでビューを切り替える
 ## provide defferent view between PC and Mobile
-gem 'jpmobile', '~> 4.2.0'
+gem 'jpmobile', '~> 5.0.0'
 
 ## 画像のアップロード
 ## Image upload solution
